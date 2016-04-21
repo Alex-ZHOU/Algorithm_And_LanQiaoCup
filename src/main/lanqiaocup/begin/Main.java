@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String args[]) {
-		BEGIN_4();
+		System.out.println("蓝桥杯 入门训练");
+		// BEGIN_4();
 		// BEGIN_3();
 		// BEGIN_2();
 		// BEGIN_1();
@@ -34,7 +35,8 @@ public class Main {
 	// * 数据规模与约定
 	// * 1 <= n <= 1,000,000。
 	// * */
-	public static void BEGIN_4() {
+	@SuppressWarnings("unused")
+	private static void BEGIN_4() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		sc.close();
@@ -88,6 +90,7 @@ public class Main {
 	// * 本题对精度要求较高，请注意π的值应该取较精确的值。你可以使用常量来表示π，比如PI=3.14159265358979323，
 	// * 也可以使用数学公式来求π，比如PI=atan(1.0)*4。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BEGIN_3() {
 		Scanner sc = new Scanner(System.in);
 		double r = sc.nextDouble();
@@ -130,6 +133,7 @@ public class Main {
 	// * 数据规模与约定
 	// * 1 <= n <= 1,000,000,000。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BEGIN_2() {
 		Scanner sc = new Scanner(System.in);
 		Long n = sc.nextLong();
@@ -179,6 +183,7 @@ public class Main {
 	// * 数据规模与约定
 	// * -10000 <= A, B <= 10000。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BEGIN_1() {
 		Scanner sc = new Scanner(System.in);
 		Integer a = sc.nextInt();
@@ -187,4 +192,3 @@ public class Main {
 		sc.close();
 	}
 }
-

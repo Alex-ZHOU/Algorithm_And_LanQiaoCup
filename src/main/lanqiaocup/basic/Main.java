@@ -9,7 +9,7 @@ public class Main {
 		// BASIC_29();
 		// BASIC_28();
 		// BASIC_27();
-		// BASIC_26();
+		// BASIC_26();Ï
 		// BASIC_25();
 		// BASIC_24();
 		// BASIC_23();
@@ -23,7 +23,7 @@ public class Main {
 		// BASIC_15();
 		// BASIC_14();
 		// BASIC_13();
-		//BASIC_12();
+		// BASIC_12();
 		// BASIC_11();
 		// BASIC_10();
 		// BASIC_9();
@@ -89,8 +89,7 @@ public class Main {
 				// 48)*(aChar[aChar.length - i - 1] -
 				// 48)*(BASIC_30_mi(10,i))*(BASIC_30_mi(10,j));
 				// result = BASIC_30_add(temp+"",result);
-				String temp = (bChar[bChar.length - j - 1] - 48)
-						* (aChar[aChar.length - i - 1] - 48) + "";
+				String temp = (bChar[bChar.length - j - 1] - 48) * (aChar[aChar.length - i - 1] - 48) + "";
 				for (int k = 0; k < i + j; k++) {
 					temp = temp + "0";
 				}
@@ -383,8 +382,7 @@ public class Main {
 
 	}
 
-	private static boolean BASIC_27_judgeQueen(int i, int j, int k,
-			int[][] queen) {
+	private static boolean BASIC_27_judgeQueen(int i, int j, int k, int[][] queen) {
 
 		for (int x = 0; x < queen.length; x++) {
 			if (queen[x][j] == k || queen[i][x] == k) {
@@ -1325,8 +1323,7 @@ public class Main {
 			java.util.Arrays.sort(a, 0, 4);
 			java.util.Arrays.sort(b, 0, 4);
 			// System.out.println(Math.abs((a[2] - a[1]) * (b[2] - b[1])));
-			System.out.println(String.format("%.2f",
-					Math.abs((a[2] - a[1]) * (b[2] - b[1]))));
+			System.out.println(String.format("%.2f", Math.abs((a[2] - a[1]) * (b[2] - b[1]))));
 		}
 
 	}
@@ -1389,19 +1386,15 @@ public class Main {
 			temp = BASIC_17_multiplicativeMatrix(a, a);
 			break;
 		case 3:
-			temp = BASIC_17_multiplicativeMatrix(
-					BASIC_17_multiplicativeMatrix(a, a), a);
+			temp = BASIC_17_multiplicativeMatrix(BASIC_17_multiplicativeMatrix(a, a), a);
 			break;
 		case 4:
-			temp = BASIC_17_multiplicativeMatrix(
-					BASIC_17_multiplicativeMatrix(a, a),
+			temp = BASIC_17_multiplicativeMatrix(BASIC_17_multiplicativeMatrix(a, a),
 					BASIC_17_multiplicativeMatrix(a, a));
 			break;
 		case 5:
-			temp = BASIC_17_multiplicativeMatrix(
-					BASIC_17_multiplicativeMatrix(
-							BASIC_17_multiplicativeMatrix(a, a),
-							BASIC_17_multiplicativeMatrix(a, a)), a);
+			temp = BASIC_17_multiplicativeMatrix(BASIC_17_multiplicativeMatrix(BASIC_17_multiplicativeMatrix(a, a),
+					BASIC_17_multiplicativeMatrix(a, a)), a);
 			break;
 		default:
 			break;
@@ -1709,8 +1702,7 @@ public class Main {
 			// 2To8
 			String value = "";
 			for (int j = 0; j < data.length(); j += 3) {
-				char threeChar[] = ((String) data.subSequence(j, j + 3))
-						.toCharArray();
+				char threeChar[] = ((String) data.subSequence(j, j + 3)).toCharArray();
 				int num = 0;
 				for (int k = 0; k < threeChar.length; k++) {
 
@@ -1783,8 +1775,7 @@ public class Main {
 				break;
 
 			default:
-				sum = Integer.parseInt("" + n.charAt(i))
-						* BASIC_11_mathPow(16, flag) + sum;
+				sum = Integer.parseInt("" + n.charAt(i)) * BASIC_11_mathPow(16, flag) + sum;
 				// System.out.println(Integer.parseInt(""+n.charAt(i))*1);
 				break;
 			}
@@ -1886,8 +1877,7 @@ public class Main {
 					continue;
 				}
 				size5[3] = (i - size5[0] * 10000 - size5[1] * 1000 - size5[2] * 100) / 10;
-				size5[4] = i - size5[0] * 10000 - size5[1] * 1000 - size5[2]
-						* 100 - size5[3] * 10;
+				size5[4] = i - size5[0] * 10000 - size5[1] * 1000 - size5[2] * 100 - size5[3] * 10;
 				if (size5[0] == size5[4] && size5[3] == size5[1]) {
 					sum = 0;
 					for (int j = 0; j < size5.length; j++) {
@@ -1905,12 +1895,9 @@ public class Main {
 				size6[1] = (i - size6[0] * 100000) / 10000;
 				size6[2] = (i - size6[0] * 100000 - size6[1] * 10000) / 1000;
 				size6[3] = (i - size6[0] * 100000 - size6[1] * 10000 - size6[2] * 1000) / 100;
-				size6[4] = (i - size6[0] * 100000 - size6[1] * 10000 - size6[2]
-						* 1000 - size6[3] * 100) / 10;
-				size6[5] = i - size6[0] * 100000 - size6[1] * 10000 - size6[2]
-						* 1000 - size6[3] * 100 - size6[4] * 10;
-				if (size6[0] == size6[5] && size6[1] == size6[4]
-						&& size6[2] == size6[3]) {
+				size6[4] = (i - size6[0] * 100000 - size6[1] * 10000 - size6[2] * 1000 - size6[3] * 100) / 10;
+				size6[5] = i - size6[0] * 100000 - size6[1] * 10000 - size6[2] * 1000 - size6[3] * 100 - size6[4] * 10;
+				if (size6[0] == size6[5] && size6[1] == size6[4] && size6[2] == size6[3]) {
 					sum = 0;
 					for (int j = 0; j < size6.length; j++) {
 						sum = sum + size6[j];
@@ -1930,8 +1917,7 @@ public class Main {
 					continue;
 				}
 				size5[3] = (i - size5[0] * 10000 - size5[1] * 1000 - size5[2] * 100) / 10;
-				size5[4] = i - size5[0] * 10000 - size5[1] * 1000 - size5[2]
-						* 100 - size5[3] * 10;
+				size5[4] = i - size5[0] * 10000 - size5[1] * 1000 - size5[2] * 100 - size5[3] * 10;
 				if (size5[0] == size5[4] && size5[3] == size5[1]) {
 					sum = 0;
 					for (int j = 0; j < size5.length; j++) {
@@ -2234,6 +2220,7 @@ public class Main {
 	// * 00011
 	// * <以下部分省略>
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_2() {
 		int a[] = new int[5];
 		int temp;
@@ -2253,7 +2240,6 @@ public class Main {
 			temp = temp % 2;
 
 			a[4] = temp / 1;
-			// temp = temp%1;
 
 			for (int j = 0; j < a.length; j++) {
 				System.out.print(a[j]);
@@ -2288,6 +2274,7 @@ public class Main {
 	// * 数据规模与约定
 	// * 1990 <= y <= 2050。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_1() {
 		Scanner sc = new Scanner(System.in);
 		int year = sc.nextInt();
@@ -2302,4 +2289,3 @@ public class Main {
 	}
 
 }
-
