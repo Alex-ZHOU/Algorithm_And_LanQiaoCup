@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String args[]) {
+		// System.out.println("历届试题 幸运数");
 		PREV_29();
 		// PREV_11();
 		// PREV_10();
 		// PREV_9();
 		// PREV_8();
 		// PREV_7();
-		
+
 		// PREV_6();
 		// PREV_5();
 		// PREV_4();
@@ -31,7 +32,7 @@ public class Main {
 
 		long modm = 0;
 		for (long i = 1; i <= n; i++) {
-			modm =  ((modm + PREV_29_f(i) % fm) % fm);
+			modm = ((modm + PREV_29_f(i) % fm) % fm);
 		}
 
 		System.out.println(modm % p);
@@ -757,7 +758,7 @@ public class Main {
 			} else if (j <= i - 3) {
 				return 0;
 			}
-		}// 奇数行中间的点
+		} // 奇数行中间的点
 
 		if (i > 2 && i % 2 == 0) {
 			if (j % 2 == 0 || j > i + 2) {
@@ -765,7 +766,7 @@ public class Main {
 			} else if (j == i - 1) {
 				return 0;
 			}
-		}// 偶数行中间的点
+		} // 偶数行中间的点
 
 		return 1;
 	}
