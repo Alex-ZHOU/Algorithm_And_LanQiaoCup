@@ -5,57 +5,36 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String args[]) {
-		// ALGO_142();
-		ALGO_116();
+		// ALGO_142(); TheLast
+		//ALGO_116(); 
+		
+		//ALGO_4();
 		// ALGO_3();
 		// ALGO_2();
 		// ALGO_1();
 	}
 
-	private static void ALGO_116() {
+	private static void ALGO_4() {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int K = sc.nextInt();
-		int a[] = new int[N];
-		int sum = 0;
+		int n = sc.nextInt();
+		int a[] = new int[n];
 		for (int i = 0; i < a.length; i++) {
 			a[i] = sc.nextInt();
-			sum += a[i];
 		}
-		sc.close();
-
-		int average = sum / (K + 1);
-
-	//	Arrays.sort(a);
-
-		int temp[] = new int[K + 1];
-		int j = 0;
-		for (int i = 0; i < temp.length; i++) {
-			for (; j < a.length; j++) {
-				 System.out.print(K - i + " ");
-				System.out.println(a.length - 1 - j);
-				if(temp[i] > average){
-					j++;
-					break;
-				}
-				if (temp[i] < average && a.length - 1 - j >= K - i) {
-					temp[i] += a[j];
-					if (a.length - 1 - j == K - i) {
-						j++;
-						break;
-					}
-				}
-
+		int b[][] = new int[n-1][2];
+		for (int i = 0; i < b.length; i++) {
+			for (int j = 0; j < b[i].length; j++) {
+				b[i][j] = sc.nextInt();
 			}
 		}
-		sum = 1;
-		for (int i = 0; i < temp.length; i++) {
-			sum *= temp[i];
-			 System.out.println(temp[i]);
-		}
-		System.out.println(sum);
-
+		sc.close();
+		
+		
+		
+		
 	}
+
+	
 
 	// /*
 	// * 算法训练 K好数
@@ -84,6 +63,7 @@ public class Main {
 	private static long ALGO_3_Count = 0;
 	private static long[][] ALGO_3_Data = new long[105][105];
 
+	@SuppressWarnings("unused")
 	private static void ALGO_3() {
 		Scanner sc = new Scanner(System.in);
 		int k = sc.nextInt();
@@ -98,8 +78,7 @@ public class Main {
 			for (int j = 0; j < k; j++) {
 				for (int x = 0; x < k; x++) {
 					if (x != j - 1 && x != j + 1) {
-						ALGO_3_Data[i][j] = ALGO_3_Data[i][j] % 1000000007
-								+ ALGO_3_Data[i - 1][x] % 1000000007;
+						ALGO_3_Data[i][j] = ALGO_3_Data[i][j] % 1000000007 + ALGO_3_Data[i - 1][x] % 1000000007;
 					}
 				}
 			}
@@ -109,119 +88,6 @@ public class Main {
 		}
 
 		System.out.println(ALGO_3_Count);
-		// Scanner sc = new Scanner(System.in);
-		// int k = sc.nextInt();
-		// int l = sc.nextInt();
-		// sc.close();
-		//
-		// long count = 0;
-		//
-		// int a[] = new int[l];
-		// a[l - 1] = 1;
-		// while (a[0] < k) {
-		//
-		// boolean flagK = true;
-		// for (int i = 0; i < a.length - 1; i++) {
-		// if (Math.abs(a[i] - a[i + 1]) == 1) {
-		// flagK = false;
-		// break;
-		// }
-		// }
-		// if (flagK) {
-		// count = count % 1000000007 + 1;
-		// }
-		//
-		// a[0]++;
-		//
-		// // 进位没有置零
-		// // if (a[0] == k) {
-		// // for (int i = 1; i < a.length; i++) {
-		// // if (a[i] == k - 1) {
-		// // continue;
-		// // } else {
-		// // a[i]++;
-		// // a[0] = 0;
-		// // break;
-		// // }
-		// // }
-		// // }
-		//
-		// // 运行超时
-		// if (a[0] == k) {
-		// for (int i = 1; i < a.length; i++) {
-		// if (a[i] < k - 1) {
-		// a[i]++;
-		// a[0] = 0;
-		// break;
-		// // 没有达到k-1就进位加1,a[0]设置为0并退出循环
-		// } else if (a[i] == k - 1) {
-		// if (i < l - 1) {
-		// a[i] = 0;
-		// a[0] = 0;
-		// continue;
-		// } else if (i == l - 1) {
-		// break;
-		// // continue;
-		// }
-		// }
-		// }
-		// }
-		//
-		//
-		//
-		//
-		// // for (int j = 0; j < a.length; j++) {
-		// // System.out.print(a[j]);
-		// // }
-		// // System.out.println();
-		// }
-		// System.out.println(count);
-	}
-
-	private static void ALGO_142() {
-		Scanner sc = new Scanner(System.in);
-		String sign = sc.next();
-		float a = sc.nextFloat();
-		float b = sc.nextFloat();
-		float c = sc.nextFloat();
-		float d = sc.nextFloat();
-		sc.close();
-
-		if (sign.equals("*")) {
-			ALGO_142_Mul(a, b, c, d);
-		} else if (sign.equals("/")) {
-			ALGO_142_Div(a, b, c, d);
-		} else {
-			ALGO_142_addOrSub(sign, a, b, c, d);
-		}
-	}
-
-	private static void ALGO_142_Div(float a, float b, float c, float d) {
-		float temp = (a * c + b * d) / (c * c + d * d);
-		float tempI = (b * c - a * d) / (c * c + d * d);
-		System.out.printf("%.2f+%.2fi", temp, tempI);
-	}
-
-	private static void ALGO_142_Mul(float a, float b, float c, float d) {
-		float temp = a * c - b * d;
-		float tempI = b * c + a * d;
-		System.out.printf("%.2f+%.2fi", temp, tempI);
-		// System.out.println(temp + "" + tempI + "i");
-	}
-
-	private static void ALGO_142_addOrSub(String sign, float a, float b,
-			float c, float d) {
-		if (sign.equals("+")) {
-			float temp = a + c;
-			float tempI = b + d;
-			System.out.printf("%.2f+%.2fi", temp, tempI);
-			// System.out.println(temp + "" + tempI + "i");
-		} else if (sign.equals("-")) {
-			float temp = a - c;
-			float tempI = b - d;
-			System.out.printf("%.2f+%.2fi", temp, tempI);
-			// System.out.println(temp + "" + tempI + "i");
-		}
 	}
 
 	// /*
@@ -242,6 +108,7 @@ public class Main {
 	// * 1 <= N <= 10^6。
 	// * */
 	// 60分
+	@SuppressWarnings("unused")
 	private static void ALGO_2() {
 		Scanner sc = new Scanner(System.in);
 		long n = sc.nextLong();
@@ -292,6 +159,7 @@ public class Main {
 	// * 对于100%的数据，n,m<=1000；
 	// * 保证k<=(r-l+1)，序列中的数<=106。
 	// * */
+	@SuppressWarnings("unused")
 	private static void ALGO_1() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -345,6 +213,117 @@ public class Main {
 				}
 			}
 		}
+	}
+
+	// /*
+	// * 算法训练 P1103
+	// *
+	// * 编程实现两个复数的运算。设有两个复数 和 ，则他们的运算公式为：
+	// *
+	// * 要求：
+	// * （1）定义一个结构体类型来描述复数。
+	// * （2）复数之间的加法、减法、乘法和除法分别用不用的函数来实现。
+	// * （3）必须使用结构体指针的方法把函数的计算结果返回。
+	// * 说明：用户输入：运算符号(+,-,*,/) a b c d.
+	// * 输出：a+bi，输出时不管a,b是小于0或等于0都按该格式输出，输出时a,b都保留两位。
+	// *
+	// * 输入：
+	// * - 2.5 3.6 1.5 4.9
+	// * 输出：
+	// * 1.00+-1.30i
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_142() {
+		Scanner sc = new Scanner(System.in);
+		String sign = sc.next();
+		float a = sc.nextFloat();
+		float b = sc.nextFloat();
+		float c = sc.nextFloat();
+		float d = sc.nextFloat();
+		sc.close();
+
+		if (sign.equals("*")) {
+			ALGO_142_Mul(a, b, c, d);
+		} else if (sign.equals("/")) {
+			ALGO_142_Div(a, b, c, d);
+		} else {
+			ALGO_142_addOrSub(sign, a, b, c, d);
+		}
+	}
+
+	private static void ALGO_142_Div(float a, float b, float c, float d) {
+		float temp = (a * c + b * d) / (c * c + d * d);
+		float tempI = (b * c - a * d) / (c * c + d * d);
+		System.out.printf("%.2f+%.2fi", temp, tempI);
+	}
+
+	private static void ALGO_142_Mul(float a, float b, float c, float d) {
+		float temp = a * c - b * d;
+		float tempI = b * c + a * d;
+		System.out.printf("%.2f+%.2fi", temp, tempI);
+		// System.out.println(temp + "" + tempI + "i");
+	}
+
+	private static void ALGO_142_addOrSub(String sign, float a, float b, float c, float d) {
+		if (sign.equals("+")) {
+			float temp = a + c;
+			float tempI = b + d;
+			System.out.printf("%.2f+%.2fi", temp, tempI);
+			// System.out.println(temp + "" + tempI + "i");
+		} else if (sign.equals("-")) {
+			float temp = a - c;
+			float tempI = b - d;
+			System.out.printf("%.2f+%.2fi", temp, tempI);
+			// System.out.println(temp + "" + tempI + "i");
+		}
+	}
+	
+	
+	
+	
+	private static void ALGO_116() {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int K = sc.nextInt();
+		int a[] = new int[N];
+		int sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+			sum += a[i];
+		}
+		sc.close();
+
+		int average = sum / (K + 1);
+
+		// Arrays.sort(a);
+
+		int temp[] = new int[K + 1];
+		int j = 0;
+		for (int i = 0; i < temp.length; i++) {
+			for (; j < a.length; j++) {
+				System.out.print(K - i + " ");
+				System.out.println(a.length - 1 - j);
+				if (temp[i] > average) {
+					j++;
+					break;
+				}
+				if (temp[i] < average && a.length - 1 - j >= K - i) {
+					temp[i] += a[j];
+					if (a.length - 1 - j == K - i) {
+						j++;
+						break;
+					}
+				}
+
+			}
+		}
+		sum = 1;
+		for (int i = 0; i < temp.length; i++) {
+			sum *= temp[i];
+			System.out.println(temp[i]);
+		}
+		System.out.println(sum);
+
 	}
 
 }

@@ -27,6 +27,7 @@ public class MaximumAverageValue {
 	private static double y[] = new double[n];
 
 	public static void main(String[] args) {
+		// 二分法
 
 		double lb = 0;
 		double ub = Integer.MAX_VALUE;
@@ -45,7 +46,7 @@ public class MaximumAverageValue {
 	}
 
 	private static boolean C(double x) {
-		
+
 		for (int i = 0; i < n; i++) {
 
 			y[i] = v[i] - x * w[i];

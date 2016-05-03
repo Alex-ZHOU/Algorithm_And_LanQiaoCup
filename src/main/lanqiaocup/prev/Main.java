@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String args[]) {
-		// System.out.println("历届试题 幸运数");
+		// System.out.println("蓝桥杯 历届试题");
 		PREV_29();
 		// PREV_11();
 		// PREV_10();
@@ -28,59 +28,38 @@ public class Main {
 		long p = sc.nextLong();
 		sc.close();
 
-		long fm = PREV_29_f(m);
+		long fm = PREV_29_f((int) m);
 
 		long modm = 0;
-		for (long i = 1; i <= n; i++) {
+		for (int i = 1; i <= n; i++) {
 			modm = ((modm + PREV_29_f(i) % fm) % fm);
 		}
 
 		System.out.println(modm % p);
 
-		// Scanner sc = new Scanner(System.in);
-		// long n = sc.nextLong();
-		// sc.close();
-		// System.out.println(PREV_29_f(n));
 
 	}
 
-	private static long PREV_29_f(long i) {
+	private static long PREV_29_F[] = new long[1000];
+	
+	private static long PREV_29_f(int i) {
+		
+		if(PREV_29_F[i]>0){
+			return PREV_29_F[i];
+		}
 
 		if (i == 1 || i == 2) {
-			return 1;
+			PREV_29_F[i] = 1;
+			
 		} else {
-
-			long num[] = { 1, 1 };
-
-			for (long j = 2; j < i; j++) {
-				long temp = num[1];
-				num[1] = num[0] + num[1];
-				num[0] = temp;
-			}
-			return num[1];
+			PREV_29_F[i]  = PREV_29_f(i-1)+PREV_29_f(i-2);
 		}
-		//
-		// if (i == 1 || i == 2) {
-		// return 1;
-		// } else {
-		//
-		// int a[] = new int[i];
-		// a[0]= 1;
-		// a[1]=1;
-		// for (int j = 2; j < a.length; j++) {
-		// a[j]=a[j-1]+a[j-2];
-		// }
-		// //System.out.println(a[i-1]);
-		// return a[i-1];
-		// }
-		// if (i == 1 || i == 2) {
-		// return 1;
-		// } else {
-		// return PREV_29_f(i - 1) + PREV_29_f(i - 2);
-		// }
-
+		return PREV_29_F[i];
 	}
 
+	
+	
+	
 	private static int PREV_9_Load = 0;
 
 	private static void PREV_9() {

@@ -9,7 +9,7 @@ public class Main {
 		// BASIC_29();
 		// BASIC_28();
 		// BASIC_27();
-		// BASIC_26();Ï
+		// BASIC_26();
 		// BASIC_25();
 		// BASIC_24();
 		// BASIC_23();
