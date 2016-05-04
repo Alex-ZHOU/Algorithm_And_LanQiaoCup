@@ -1,18 +1,20 @@
 package main.lanqiaocup.prev;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String args[]) {
 		// System.out.println("蓝桥杯 历届试题");
-		PREV_29();
-		// PREV_11();
+		// PREV_29();
+		PREV_11();
 		// PREV_10();
+
+		// TODO
 		// PREV_9();
 		// PREV_8();
 		// PREV_7();
-
 		// PREV_6();
 		// PREV_5();
 		// PREV_4();
@@ -21,45 +23,6 @@ public class Main {
 		// PREV_1();
 	}
 
-	private static void PREV_29() {
-		Scanner sc = new Scanner(System.in);
-		long n = sc.nextLong();
-		long m = sc.nextLong();
-		long p = sc.nextLong();
-		sc.close();
-
-		long fm = PREV_29_f((int) m);
-
-		long modm = 0;
-		for (int i = 1; i <= n; i++) {
-			modm = ((modm + PREV_29_f(i) % fm) % fm);
-		}
-
-		System.out.println(modm % p);
-
-
-	}
-
-	private static long PREV_29_F[] = new long[1000];
-	
-	private static long PREV_29_f(int i) {
-		
-		if(PREV_29_F[i]>0){
-			return PREV_29_F[i];
-		}
-
-		if (i == 1 || i == 2) {
-			PREV_29_F[i] = 1;
-			
-		} else {
-			PREV_29_F[i]  = PREV_29_f(i-1)+PREV_29_f(i-2);
-		}
-		return PREV_29_F[i];
-	}
-
-	
-	
-	
 	private static int PREV_9_Load = 0;
 
 	private static void PREV_9() {
@@ -95,66 +58,46 @@ public class Main {
 
 	}
 
-	// private static int PREV_4_Count = 0;
-	// private static boolean PREV_4_Flag[][] = new boolean[10][10];
-	// private static int PREV_4_M;
-	// private static int PREV_4_N;
-	// private static int PREV_4_Sum;
-	// private static int PREV_4_Half;
-	// private static int PREV_4_LeftUpHalf;
-	//
-	// private static void PREV_4() {
-	// Scanner sc = new Scanner(System.in);
-	// PREV_4_M = sc.nextInt();
-	// PREV_4_N = sc.nextInt();
-	// int a[][] = new int[PREV_4_M][PREV_4_N];
-	// for (int i = 0; i < PREV_4_M; i++) {
-	// for (int j = 0; j < PREV_4_N; j++) {
-	// a[i][j] = sc.nextInt();
-	// }
-	// }
-	// sc.close();
-	// PREV_4_Sum = 0;
-	// for (int i = 0; i < PREV_4_M; i++) {
-	// for (int j = 0; j < PREV_4_N; j++) {
-	// PREV_4_Sum += a[i][j];
-	// }
-	// }
-	//
-	// if (PREV_4_Sum % 2 != 0) {
-	// System.out.println(0);
-	// } else {
-	// PREV_4_Flag[0][0] = true;
-	// PREV_4_Half = PREV_4_Sum / 2;
-	// PREV_4_Move(a, 0, 0);
-	// }
-	// System.out.println(PREV_4_Count);
-	//
-	// }
-	//
-	// private static void PREV_4_Move(int a[][], int x, int y) {
-	// int move[][] = { { 1, 0 }, { 0, 1 }, { 1, 1 } };
-	// if (PREV_4_Flag[x][y]) {
-	// for (int z = 0; z < 3; z++) {
-	// int i = x + move[z][0];
-	// int j = y + move[z][1];
-	// if (i < PREV_4_M && j < PREV_4_N) {
-	// if ((PREV_4_LeftUpHalf + a[i][j]) <= PREV_4_Half) {
-	// PREV_4_Flag[i][j] = true;
-	// PREV_4_LeftUpHalf += a[i][j];
-	// PREV_4_Count++;
-	// PREV_4_Move(a, i, j);
-	// // PREV_4_Flag[i][j] = false;
-	// }
-	// }
-	// }
-	// }
-	//
-	//
-	//
-	// }
+	private static void PREV_29() {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		long m = sc.nextLong();
+		long p = sc.nextLong();
+		sc.close();
 
-	private static void PREV_11() {
+		long fm = PREV_29_f((int) m);
+
+		long modm = 0;
+		for (int i = 1; i <= n; i++) {
+			modm = ((modm + PREV_29_f(i) % fm) % fm);
+		}
+
+		System.out.println(modm % p);
+
+	}
+
+	private static long PREV_29_F[] = new long[1000];
+
+	private static long PREV_29_f(int i) {
+
+		if (PREV_29_F[i] > 0) {
+			return PREV_29_F[i];
+		}
+
+		if (i == 1 || i == 2) {
+			PREV_29_F[i] = 1;
+
+		} else {
+			PREV_29_F[i] = PREV_29_f(i - 1) + PREV_29_f(i - 2);
+		}
+		return PREV_29_F[i];
+	}
+
+
+	
+	
+
+	private static void PREV_112() {
 		Scanner sc = new Scanner(System.in);
 		String in = sc.nextLine();
 		sc.close();
@@ -209,6 +152,111 @@ public class Main {
 	}
 
 	// /*
+	// * 历届试题 横向打印二叉树
+	// *
+	// * 问题描述
+	// * 二叉树可以用于排序。其原理很简单：对于一个排序二叉树添加新节点时，先与根节点比较，若小则交给左子树
+	// * 继续处理，否则交给右子树。
+	// * 当遇到空子树时，则把该节点放入那个位置。
+	// * 比如，10 8 5 7 12 4 的输入顺序，应该建成二叉树如下图所示，其中.表示空白。
+	// * ...|-12
+	// * 10-|
+	// * ...|-8-|
+	// * .......|...|-7
+	// * .......|-5-|
+	// * ...........|-4
+	// * 本题目要求：根据已知的数字，建立排序二叉树，并在标准输出中横向打印该二叉树。
+	// *
+	// * 输入格式
+	// * 输入数据为一行空格分开的N个整数。 N<100，每个数字不超过10000。
+	// * 输入数据中没有重复的数字。
+	// * 输出格式
+	// * 输出该排序二叉树的横向表示。为了便于评卷程序比对空格的数目，请把空格用句点代替：
+	// *
+	// * 样例输入1
+	// * 10 5 20
+	// * 样例输出1
+	// * ...|-20
+	// * 10-|
+	// * ...|-5
+	// * 样例输入2
+	// * 5 10 20 8 4 7
+	// * 样例输出2
+	// * .......|-20
+	// * ..|-10-|
+	// * ..|....|-8-|
+	// * ..|........|-7
+	// * 5-|
+	// * ..|-4
+	// */
+	// TODO 输出的格式还有一点问题
+	private static void PREV_11() {
+		Scanner sc = new Scanner(System.in);
+		String in = sc.nextLine();
+		sc.close();
+
+		String str[] = in.split("\\s+");
+
+
+		java.util.List<Integer> a = new ArrayList<>();
+
+		for (int i = 0; i < str.length; i++) {
+			a.add(Integer.parseInt(str[i]));
+		}
+		if (a.size() == 0) {
+			return;
+		}
+
+		PREV_11_DFS(a,"");
+	}
+
+	private static void PREV_11_DFS(java.util.List<Integer> a,String str) {
+
+		int first = a.get(0);
+
+		java.util.List<Integer> bigger = new ArrayList<>();
+		java.util.List<Integer> smaller = new ArrayList<>();
+
+		for (int i = 1; i < a.size(); i++) {
+
+			if (a.get(i) > first) {
+				bigger.add(a.get(i));
+			} else if (a.get(i) < first) {
+				smaller.add(a.get(i));
+			}
+		}
+
+		String str2  = "";
+		if (str.length()==0) {
+			str2 = first+"";
+		}else{
+			String temp = "";
+			for (int i = 0; i < str.length()-1; i++) {
+				temp += ".";
+			}
+			str2 = temp+"|-"+first;
+		}
+		if (a.size() != 1) {
+			str2 +="-|";
+		}
+		
+		
+		if (bigger.size() > 0) {
+			PREV_11_DFS(bigger,str2);
+		}
+
+		System.out.print(str2);
+
+		System.out.println();
+		
+		if (smaller.size() > 0) {
+			PREV_11_DFS(smaller,str2);
+		}
+
+	}
+	
+	
+	// /*
 	// * 历届试题 幸运数
 	// *
 	// * 问题描述
@@ -238,6 +286,7 @@ public class Main {
 	// * 样例输出1
 	// * 8
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_10() {
 		Scanner sc = new Scanner(System.in);
 		int m = sc.nextInt();
@@ -320,6 +369,7 @@ public class Main {
 	// * 样例输出2
 	// * 7
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_8() {
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
@@ -385,6 +435,7 @@ public class Main {
 	// * 样例输出1
 	// * 9
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_7() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -440,6 +491,7 @@ public class Main {
 	// * 样例输出2
 	// * 1
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_6() {
 		Scanner sc = new Scanner(System.in);
 		final String init = sc.next();
@@ -516,6 +568,7 @@ public class Main {
 	// * 样例输出2
 	// * 105 120
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_5() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -556,6 +609,113 @@ public class Main {
 	}
 
 	// /*
+	// * 历届试题 剪格子
+	// *
+	// * 问题描述
+	// * 如下图所示，3 x 3 的格子中填写了一些整数。
+	// * +--*--+--+
+	// * |10* 1|52|
+	// * +--****--+
+	// * |20|30* 1|
+	// * *******--+
+	// * | 1| 2| 3|
+	// * +--+--+--+
+	// * 我们沿着图中的星号线剪开，得到两个部分，每个部分的数字和都是60。
+	// * 本题的要求就是请你编程判定：对给定的m x n 的格子中的整数，是否可以分割为两个部分，
+	// * 使得这两个区域的数字和相等。
+	// * 如果存在多种解答，请输出包含左上角格子的那个区域包含的格子的最小数目。
+	// * 如果无法分割，则输出 0。
+	// *
+	// * 输入格式
+	// * 程序先读入两个整数 m n 用空格分割 (m,n<10)。
+	// * 表示表格的宽度和高度。
+	// * 接下来是n行，每行m个正整数，用空格分开。每个整数不大于10000。
+	// * 输出格式
+	// * 输出一个整数，表示在所有解中，包含左上角的分割区可能包含的最小的格子数目。
+	// *
+	// * 样例输入1
+	// * 3 3
+	// * 10 1 52
+	// * 20 30 1
+	// * 1 2 3
+	// * 样例输出1
+	// * 3
+	// * 样例输入2
+	// * 4 3
+	// * 1 1 1 1
+	// * 1 30 80 2
+	// * 1 1 1 100
+	// * 样例输出2
+	// * 10
+	// */
+	private static int PREV_4_To[][] = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+	private static int PREV_4_M = 0;
+	private static int PREV_4_N = 0;
+	private static int PREV_4_S = 0;
+
+	private static int PREV_4_map[][] = new int[20][20];
+	private static int PREV_4_vis[][] = new int[20][20];
+
+	@SuppressWarnings("unused")
+	private static void PREV_4() {
+
+		Scanner sc = new Scanner(System.in);
+		PREV_4_N = sc.nextInt();
+		PREV_4_M = sc.nextInt();
+
+		for (int i = 0; i < PREV_4_M; i++) {
+			for (int j = 0; j < PREV_4_N; j++) {
+				PREV_4_map[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+
+		int sum = 0;
+
+		for (int i = 0; i < PREV_4_M; i++) {
+			for (int j = 0; j < PREV_4_N; j++) {
+				sum += PREV_4_map[i][j];
+			}
+		}
+
+		if (sum % 2 != 0) {
+
+			System.out.println(0);
+			return;
+		} else {
+			PREV_4_S = sum / 2;
+			PREV_4_vis[0][0] = 1;
+			System.out.println(PREV_4_DFS(0, 0, PREV_4_map[0][0]));
+			return;
+		}
+
+	}
+
+	private static int PREV_4_DFS(int x, int y, int sum) {
+
+		if (sum == PREV_4_S) {
+			return 1;
+		}
+
+		int ans = 0;
+		for (int i = 0; i < 4; i++) {
+			int tx = x + PREV_4_To[i][0];
+			int ty = y + PREV_4_To[i][1];
+			if (tx >= 0 && tx < PREV_4_N && ty >= 0 && ty < PREV_4_M) {
+				if (PREV_4_vis[tx][ty] == 0 && PREV_4_map[tx][ty] + sum <= PREV_4_S) {
+					PREV_4_vis[tx][ty] = 1;
+					ans = PREV_4_DFS(tx, ty, PREV_4_map[tx][ty] + sum);
+					if (ans > 0)
+						return ans + 1;
+					PREV_4_vis[tx][ty] = 0;
+				}
+			}
+		}
+		return 0;
+	}
+
+	// /*
 	// * 历届试题 带分数
 	// *
 	// * 问题描述
@@ -578,16 +738,19 @@ public class Main {
 	// * 样例输出2
 	// * 6
 	// * */
-	// 该程序运行超时
+	// TODO 该程序运行超时
 	private static int PREV_3_N;
 	private static int PREV_3_Count = 0;
 	private static int[] PREV_3_A = new int[9];
 	private static boolean[] PREV_3_Flag = new boolean[9];
+	private static int PREV_3_NumLen = 0;
 
+	@SuppressWarnings("unused")
 	private static void PREV_3() {
 		Scanner sc = new Scanner(System.in);
 		PREV_3_N = sc.nextInt();
 		sc.close();
+		PREV_3_NumLen = (PREV_3_N + "").length();
 		PREV_3_String(0);
 		System.out.println(PREV_3_Count);
 	}
@@ -615,15 +778,16 @@ public class Main {
 	}
 
 	private static void PREV_3_Count(String string) {
-		int numLen = (PREV_3_N + "").length();
 
-		for (int i = 0; i < numLen; i++) {
+		for (int i = 0; i < PREV_3_NumLen; i++) {
 			int a = Integer.parseInt(string.substring(0, i + 1));
 			// System.out.println(a);
 			if (a < PREV_3_N) {
 				for (int j = ((9 - i) / 2 + i); j < 9; j++) {
-					long b = Long.parseLong(string.substring(i + 1, j));
-					long c = Long.parseLong(string.substring(j));
+					int b = Integer.parseInt(string.substring(i + 1, j));
+					int c = Integer.parseInt(string.substring(j));
+					// long b = Long.parseLong(string.substring(i + 1, j));
+					// long c = Long.parseLong(string.substring(j));
 					// System.out.println(b + " " + c);
 					if (b % c != 0) {
 						continue;
@@ -698,6 +862,7 @@ public class Main {
 	// * 提示
 	// * 请仔细观察样例，尤其要注意句点的数量和输出位置。
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_2() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -773,6 +938,7 @@ public class Main {
 	// * 样例输出2
 	// * 3
 	// * */
+	@SuppressWarnings("unused")
 	private static void PREV_1() {
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
