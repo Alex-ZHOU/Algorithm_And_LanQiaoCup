@@ -8,10 +8,8 @@ public class Main {
 	public static void main(String args[]) {
 		// System.out.println("蓝桥杯 历届试题");
 		// PREV_29();
-		PREV_11();
+		// PREV_11();
 		// PREV_10();
-
-		// TODO
 		// PREV_9();
 		// PREV_8();
 		// PREV_7();
@@ -92,10 +90,6 @@ public class Main {
 		}
 		return PREV_29_F[i];
 	}
-
-
-	
-	
 
 	private static void PREV_112() {
 		Scanner sc = new Scanner(System.in);
@@ -189,14 +183,14 @@ public class Main {
 	// * 5-|
 	// * ..|-4
 	// */
-	// TODO 输出的格式还有一点问题
+	// TODO 输出的格式还有一点问题, 整体思路应该没错
+	@SuppressWarnings("unused")
 	private static void PREV_11() {
 		Scanner sc = new Scanner(System.in);
 		String in = sc.nextLine();
 		sc.close();
 
 		String str[] = in.split("\\s+");
-
 
 		java.util.List<Integer> a = new ArrayList<>();
 
@@ -207,10 +201,10 @@ public class Main {
 			return;
 		}
 
-		PREV_11_DFS(a,"");
+		PREV_11_DFS(a, "");
 	}
 
-	private static void PREV_11_DFS(java.util.List<Integer> a,String str) {
+	private static void PREV_11_DFS(java.util.List<Integer> a, String str) {
 
 		int first = a.get(0);
 
@@ -226,36 +220,34 @@ public class Main {
 			}
 		}
 
-		String str2  = "";
-		if (str.length()==0) {
-			str2 = first+"";
-		}else{
+		String str2 = "";
+		if (str.length() == 0) {
+			str2 = first + "";
+		} else {
 			String temp = "";
-			for (int i = 0; i < str.length()-1; i++) {
+			for (int i = 0; i < str.length() - 1; i++) {
 				temp += ".";
 			}
-			str2 = temp+"|-"+first;
+			str2 = temp + "|-" + first;
 		}
 		if (a.size() != 1) {
-			str2 +="-|";
+			str2 += "-|";
 		}
-		
-		
+
 		if (bigger.size() > 0) {
-			PREV_11_DFS(bigger,str2);
+			PREV_11_DFS(bigger, str2);
 		}
 
 		System.out.print(str2);
 
 		System.out.println();
-		
+
 		if (smaller.size() > 0) {
-			PREV_11_DFS(smaller,str2);
+			PREV_11_DFS(smaller, str2);
 		}
 
 	}
-	
-	
+
 	// /*
 	// * 历届试题 幸运数
 	// *
