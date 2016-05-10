@@ -16,6 +16,13 @@ public class Main {
 		// ALGO_68();
 		// ALGO_67();
 		// ALGO_66();
+		// ALGO_64();
+		// ALGO_63();
+		// ALGO_62();
+		// ALGO_61();
+		// ALGO_60(); //TODO
+		// ALGO_59(); //TODO
+		// ALGO_58();
 		// ALGO_43();
 		// ALGO_11();
 		// ALGO_4();
@@ -408,6 +415,150 @@ public class Main {
 	}
 
 	// /*
+	// * 算法训练 大小写判断
+	// *
+	// * 问题描述
+	// * 给定一个英文字母判断这个字母是大写还是小写。
+	// * 输入格式
+	// * 输入只包含一个英文字母c。
+	// * 输出格式
+	// * 如果c是大写字母，输出“upper”，否则输出“lower”。
+	// *
+	// * 样例输入
+	// * x
+	// * 样例输出
+	// * lower
+	// * 样例输入
+	// * B
+	// * 样例输出
+	// * upper
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_64() {
+		Scanner sc = new Scanner(System.in);
+		String string = sc.next();
+		sc.close();
+
+		char c = string.charAt(0);
+
+		if (c > 96) {
+			System.out.println("lower");
+		} else {
+			System.out.println("upper");
+		}
+	}
+
+	// /*
+	// * 算法训练 乘法表
+	// *
+	// * 问题描述
+	// * 输出九九乘法表。
+	// * 输出格式
+	// * 输出格式见下面的样例。乘号用“*”表示。
+	// *
+	// * 样例输出
+	// * 下面给出输出的前几行：
+	// * 1*1=1
+	// * 2*1=2 2*2=4
+	// * 3*1=3 3*2=6 3*3=9
+	// * 4*1=4 4*2=8 4*3=12 4*4=16
+	// * ……
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_63() {
+		for (int i = 1; i <= 9; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.print(i + "*" + j + "=" + i * j + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	// /*
+	// * 算法训练 平方计算
+	// *
+	// * 问题描述
+	// * 输入正整数a, m，输出a^2%m，其中^表示乘方，即a^2表示a的平方，%表示取余。
+	// * 输入格式
+	// * 输入包含两个整数a, m，a不超过10000。
+	// * 输出格式
+	// * 输出一个整数，即a^2%m的值。
+	// *
+	// * 样例输入
+	// * 5 6
+	// * 样例输出
+	// * 1
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_62() {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int m = sc.nextInt();
+		sc.close();
+
+		System.out.println((a * a) % m);
+
+	}
+
+	// /*
+	// * 算法训练 奇偶判断
+	// *
+	// * 问题描述
+	// * 能被2整除的数称为偶数，不能被2整除的数称为奇数。给一个整数x，判断x是奇数还是偶数。
+	// * 输入格式
+	// * 输入包括一个整数x，0<=x<=100000000。
+	// * 输出格式
+	// * 如果x是奇数，则输出“odd”，如果是偶数，则输出“even”。
+	// *
+	// * 样例输入
+	// * 10
+	// * 样例输出
+	// * even
+	// * 样例输入
+	// * 2009
+	// * 样例输出
+	// * odd
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_61() {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		sc.close();
+
+		if (x % 2 == 0) {
+			System.out.println("even");
+		} else {
+			System.out.println("odd");
+		}
+	}
+
+	// /*
+	// * 算法训练 字串逆序
+	// *
+	// * 问题描述
+	// * 给定一个字符串，将这个串的所有字母逆序后输出。
+	// * 输入格式
+	// * 输入包含一个字符串，长度不超过100，字符串中不含空格。
+	// * 输出格式
+	// * 输出包含一个字符串，为上面字符串的逆序。
+	// *
+	// * 样例输入
+	// * tsinsen
+	// * 样例输出
+	// * nesnist
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_58() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		sc.close();
+
+		StringBuffer sb = new StringBuffer(str);
+		str = sb.reverse().toString();
+		System.out.println(str);
+	}
+
+	// /*
 	// * 算法训练 A+B Problem
 	// *
 	// * 问题描述
@@ -730,6 +881,159 @@ public class Main {
 			}
 		}
 		sc.close();
+
+	}
+
+	private static void ALGO_60() {
+		float a[][] = new float[2][2];
+		Scanner sc = new Scanner(System.in);
+		float b = sc.nextFloat();
+		float m = sc.nextFloat();
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				a[i][j] = sc.nextFloat();
+			}
+		}
+		sc.close();
+
+		if (b == 0) {
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+					if (i == j) {
+						System.out.print(1 % m + " ");
+					} else {
+						System.out.print(0 + " ");
+					}
+				}
+				System.out.println();
+			}
+			return;
+		} else if (b % 2 == 0) {
+			//
+			//
+			float temp[][] = new float[2][2];
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+					temp[i][j] = a[i][j];
+				}
+			}
+			//
+			for (int j2 = 0; j2 < b / 2; j2++) {
+				temp = ALGO_60_Matrix(a, temp);
+			}
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+
+					temp[i][j] %= m;
+				}
+			}
+			for (int j2 = 0; j2 < 2; j2++) {
+				temp = ALGO_60_Matrix(temp, temp);
+			}
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+
+					System.out.print(temp[i][j] % m + " ");
+				}
+				System.out.println();
+			}
+		} else {
+			//
+			//
+			float temp[][] = new float[2][2];
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+					temp[i][j] = a[i][j];
+				}
+			}
+			//
+			for (float j2 = 0; j2 < b - 1; j2++) {
+				temp = ALGO_60_Matrix(temp, a);
+			}
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+					temp[i][j] %= m;
+				}
+			}
+
+			temp = ALGO_60_Matrix(a, temp);
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[i].length; j++) {
+					System.out.print(temp[i][j] % m + " ");
+				}
+				System.out.println();
+			}
+		}
+
+	}
+
+	private static float[][] ALGO_60_Matrix(float a[][], float b[][]) {
+		float c[][] = new float[a.length][b[0].length];
+
+		int x, i, j;
+		for (i = 0; i < a.length; i++) {
+			for (j = 0; j < b[0].length; j++) {
+				float temp = 0;
+				for (x = 0; x < b.length; x++) {
+					temp += a[i][x] * b[x][j];
+				}
+				c[i][j] = temp;
+
+			}
+		}
+		return c;
+	}
+
+	private static void ALGO_59() {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int a[] = new int[N];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+		}
+		sc.close();
+
+		ALGO_59_QuickSort(a, 0, a.length - 1);
+		// java.util.Arrays.sort(a);
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a[i] + " ");
+		}
+	}
+
+	private static void ALGO_59_QuickSort(int arr[], int low, int high) {
+		int l = low;
+		int h = high;
+		int povit = arr[l];
+
+		while (l < h) {
+			while (l < h && arr[h] > povit) {
+				h--;
+			}
+			if (l < h) {
+				int temp = arr[h];
+				arr[h] = arr[l];
+				arr[l] = temp;
+				l++;
+			}
+
+			while (l < h && arr[l] <= povit) {
+				l++;
+			}
+			if (l < h) {
+				int temp = arr[h];
+				arr[h] = arr[l];
+				arr[l] = temp;
+				h--;
+
+			}
+		}
+
+		if (l > low) {
+			ALGO_59_QuickSort(arr, low, l - 1);
+		}
+		if (h < high) {
+			ALGO_59_QuickSort(arr, l + 1, high);
+		}
 
 	}
 
