@@ -24,7 +24,10 @@ public class Main {
 		// ALGO_59(); //TODO
 		// ALGO_58();
 		// ALGO_43();
+		// ALGO_13();
+		// ALGO_12();
 		// ALGO_11();
+		// ALGO_10();
 		// ALGO_4();
 		// ALGO_3();
 		// ALGO_2();
@@ -587,6 +590,189 @@ public class Main {
 	}
 
 	// /*
+	// * 算法训练 拦截导弹
+	// *
+	// * 问题描述
+	// * 某国为了防御敌国的导弹袭击，发展出一种导弹拦截系统。但是这种导弹拦截系统有一个缺陷：虽然
+	// * 它的第一发炮弹能够到达任意的高度，但是以后每一发炮弹都不能高于前一发的高度。某天，雷达捕
+	// * 捉到敌国的导弹来袭。由于该系统还在试用阶段，所以只有一套系统，因此有可能不能拦截所有的导弹。
+	// * 输入导弹依次飞来的高度（雷达给出的高度数据是不大于30000的正整数），计算这套系统最多能拦截
+	// * 多少导弹，如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。
+	// * 输入格式
+	// * 一行，为导弹依次飞来的高度
+	// * 输出格式
+	// * 两行，分别是最多能拦截的导弹数与要拦截所有导弹最少要配备的系统数
+	// *
+	// * 样例输入
+	// * 389 207 155 300 299 170 158 65
+	// * 样例输出
+	// * 6
+	// * 2
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_13() {
+
+		java.util.List<Integer> daodan = new java.util.ArrayList<Integer>();
+
+		Scanner sc = new Scanner(System.in);
+		String strin = sc.nextLine();
+		sc.close();
+
+		String strnum[] = strin.split(" ");
+
+		for (int i = 0; i < strnum.length; i++) {
+			daodan.add(Integer.parseInt(strnum[i]));
+		}
+
+		int len = daodan.size();
+
+		int num[] = new int[len];
+		int dp[] = new int[len];
+
+		int Max = dp[0] = 1;
+		int Max2 = num[0] = 1;
+
+		for (int i = 1; i < len; i++) {
+			dp[i] = 1;
+			num[i] = 1;
+
+			for (int j = 0; j < len; j++) {
+
+				if (daodan.get(i) < daodan.get(j) && dp[i] <= dp[j]) {
+					dp[i] = dp[j] + 1;
+				}
+
+				if (daodan.get(i) > daodan.get(j) && num[i] <= num[j]) {
+					num[i] = num[j] + 1;
+				}
+
+			}
+
+			if (Max < dp[i])
+				Max = dp[i];
+			if (Max2 < num[i])
+				Max2 = num[i];
+
+		}
+		System.out.println(Max);
+		System.out.println(Max2);
+
+	}
+
+	// /*
+	// * 算法训练 幂方分解
+	// *
+	// * 问题描述
+	// * 任何一个正整数都可以用2的幂次方表示。例如：
+	// * 137=2^7+2^3+2^0
+	// * 同时约定方次用括号来表示，即a^b 可表示为a（b）。
+	// * 由此可知，137可表示为：
+	// * 2（7）+2（3）+2（0）
+	// * 进一步：7= 2^2+2+2^0 （2^1用2表示）
+	// * 3=2+2^0
+	// * 所以最后137可表示为：
+	// * 2（2（2）+2+2（0））+2（2+2（0））+2（0）
+	// * 又如：
+	// * 1315=2^10 +2^8 +2^5 +2+1
+	// * 所以1315最后可表示为：
+	// * 2（2（2+2（0））+2）+2（2（2+2（0）））+2（2（2）+2（0））+2+2（0）
+	// * 输入格式
+	// * 输入包含一个正整数N（N<=20000），为要求分解的整数。
+	// * 输出格式
+	// * 程序输出包含一行字符串，为符合约定的n的0，2表示（在表示中不能有空格）
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_12() {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		sc.close();
+
+		System.out.println(ALGO_12_DO(num));
+
+	}
+
+	private static String ALGO_12_DO(int num) {
+
+		Boolean[] _boolean = new Boolean[16];
+		for (int i = 0; i < _boolean.length; i++) {
+			_boolean[i] = false;
+		}
+
+		String ALGO_12_str = "";
+
+		ALGO_12_DFS(0, num, -1, _boolean);
+
+		boolean flag = true;
+		for (int i = 0; i < _boolean.length; i++) {
+
+			if (_boolean[i]) {
+				if (i == 1) {
+					if (flag) {
+						ALGO_12_str = "2" + ALGO_12_str;
+						flag = false;
+					} else {
+						ALGO_12_str = "2+" + ALGO_12_str;
+					}
+
+				} else if (i == 0) {
+					if (flag) {
+						ALGO_12_str = "2(0)" + ALGO_12_str;
+						flag = false;
+					} else {
+						ALGO_12_str = "2(0)+" + ALGO_12_str;
+					}
+				} else if (i == 2) {
+					if (flag) {
+						ALGO_12_str = "2(2)" + ALGO_12_str;
+						flag = false;
+					} else {
+						ALGO_12_str = "2(2)+" + ALGO_12_str;
+					}
+				} else {
+
+					if (flag) {
+
+						ALGO_12_str = "2(" + ALGO_12_DO(i) + ")" + ALGO_12_str;
+						flag = false;
+					} else {
+						ALGO_12_str = "2(" + ALGO_12_DO(i) + ")+" + ALGO_12_str;
+					}
+
+				}
+
+			}
+
+		}
+		return ALGO_12_str;
+
+	}
+
+	private static boolean ALGO_12_DFS(int sum, int num, int n, Boolean[] _boolean) {
+		if (sum == num) {
+			return true;
+		}
+
+		// if (sum > ALGO_12_n) {
+		// return false;
+		// }
+
+		if (n == 15) {
+			return sum == num;
+		}
+		_boolean[n + 1] = true;
+		if (ALGO_12_DFS(sum + (int) Math.pow(2, n + 1), num, n + 1, _boolean)) {
+			return true;
+		}
+
+		_boolean[n + 1] = false;
+		if (ALGO_12_DFS(sum, num, n + 1, _boolean)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	// /*
 	// * 算法训练 瓷砖铺放
 	// *
 	// * 问题描述
@@ -635,6 +821,114 @@ public class Main {
 		ALGO_11_dfs(n - 1);
 		ALGO_11_dfs(n - 2);
 		return true;
+	}
+
+	// /*
+	// * 算法训练 集合运算
+	// *
+	// * 问题描述
+	// * 给出两个整数集合A、B，求出他们的交集、并集以及B在A中的余集。
+	// * 输入格式
+	// * 第一行为一个整数n，表示集合A中的元素个数。
+	// * 第二行有n个互不相同的用空格隔开的整数，表示集合A中的元素。
+	// * 第三行为一个整数m，表示集合B中的元素个数。
+	// * 第四行有m个互不相同的用空格隔开的整数，表示集合B中的元素。
+	// * 集合中的所有元素均为int范围内的整数，n、m<=1000。
+	// * 输出格式
+	// * 第一行按从小到大的顺序输出A、B交集中的所有元素。
+	// * 第二行按从小到大的顺序输出A、B并集中的所有元素。
+	// * 第三行按从小到大的顺序输出B在A中的余集中的所有元素。
+	// *
+	// * 样例输入
+	// * 5
+	// * 1 2 3 4 5
+	// * 5
+	// * 2 4 6 8 10
+	// * 样例输出
+	// * 2 4
+	// * 1 2 3 4 5 6 8 10
+	// * 1 3 5
+	// * 样例输入
+	// * 4
+	// * 1 2 3 4
+	// * 3
+	// * 5 6 7
+	// * 样例输出
+	// * 1 2 3 4 5 6 7
+	// * 1 2 3 4
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_10() {
+
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int aa[] = new int[a];
+		for (int i = 0; i < aa.length; i++) {
+			aa[i] = sc.nextInt();
+		}
+		int b = sc.nextInt();
+		int ba[] = new int[b];
+		for (int i = 0; i < ba.length; i++) {
+			ba[i] = sc.nextInt();
+		}
+		sc.close();
+
+		java.util.List<Integer> jiao = new java.util.ArrayList<Integer>();
+		java.util.List<Integer> bing = new java.util.ArrayList<Integer>();
+		java.util.List<Integer> yu = new java.util.ArrayList<Integer>();
+		for (int i = 0; i < aa.length; i++) {
+			bing.add(aa[i]);
+		}
+		for (int i = 0; i < ba.length; i++) {
+			if (ALGO_10_Do(aa, ba[i])) {
+				jiao.add(ba[i]);
+			} else {
+				bing.add(ba[i]);
+			}
+		}
+
+		boolean flag;
+		for (int j = 0; j < aa.length; j++) {
+			flag = true;
+			for (int i = 0; i < jiao.size(); i++) {
+				if (aa[j] == jiao.get(i)) {
+					flag = false;
+					break;
+				}
+			}
+			if (flag) {
+				yu.add(aa[j]);
+			}
+		}
+
+		java.util.Collections.sort(jiao);
+		java.util.Collections.sort(bing);
+		java.util.Collections.sort(yu);
+
+		for (int i = 0; i < jiao.size(); i++) {
+			System.out.print(jiao.get(i) + " ");
+		}
+		System.out.println();
+		for (int i = 0; i < bing.size(); i++) {
+			System.out.print(bing.get(i) + " ");
+		}
+		System.out.println();
+		for (int i = 0; i < yu.size(); i++) {
+			System.out.print(yu.get(i) + " ");
+		}
+		System.out.println();
+
+	}
+
+	private static boolean ALGO_10_Do(int a[], int b) {
+
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == b) {
+				return true;
+			}
+		}
+		return false;
+
 	}
 
 	// /*
