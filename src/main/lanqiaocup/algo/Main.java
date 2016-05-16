@@ -29,6 +29,7 @@ public class Main {
 		// ALGO_11();
 		// ALGO_10();
 		// ALGO_9();
+		// ALGO_8();
 		// ALGO_4();
 		// ALGO_3();
 		// ALGO_2();
@@ -1004,6 +1005,156 @@ public class Main {
 				ALGO_9_IsVisit[i] = false;
 			}
 		}
+	}
+
+	// /*
+	// * 算法训练 操作格子
+	// *
+	// * 问题描述
+	// * 有n个格子，从左到右放成一排，编号为1-n。
+	// * 共有m次操作，有3种操作类型：
+	// * 1.修改一个格子的权值，
+	// * 2.求连续一段格子权值和，
+	// * 3.求连续一段格子的最大值。
+	// * 对于每个2、3操作输出你所求出的结果。
+	// *
+	// * 输入格式
+	// * 第一行2个整数n，m。
+	// * 接下来一行n个整数表示n个格子的初始权值。
+	// * 接下来m行，每行3个整数p,x,y，p表示操作类型，p=1时表示修改格子x的权值为y，p=2时表示求区间[x,y]内格子权
+	// * 值和，p=3时表示求区间[x,y]内格子最大的权值。
+	// * 输出格式
+	// * 有若干行，行数等于p=2或3的操作总数。
+	// * 每行1个整数，对应了每个p=2或3操作的结果。
+	// *
+	// * 样例输入
+	// * 4 3
+	// * 1 2 3 4
+	// * 2 1 3
+	// * 1 4 3
+	// * 3 1 4
+	// * 样例输出
+	// * 6
+	// * 3
+	// *
+	// * 数据规模与约定
+	// * 对于20%的数据n <= 100，m <= 200。
+	// * 对于50%的数据n <= 5000，m <= 5000。
+	// * 对于100%的数据1 <= n <= 100000，m <= 100000，0 <= 格子权值 <= 10000。
+	// */
+	// 超时因为java太慢，相同逻辑c++可以满分通过
+	private static class ALGO_8_Node {
+		// 左
+		int l;
+		// 右
+		int r;
+		// 当前的值
+		int n;
+		// 子树总和
+		int sum;
+	}
+
+	private static ALGO_8_Node ALGO_8_node[] = new ALGO_8_Node[1000000];
+
+	@SuppressWarnings("unused")
+	private static void ALGO_8() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int na[] = new int[n];
+		for (int i = 0; i < na.length; i++) {
+			na[i] = sc.nextInt();
+		}
+		int line[][] = new int[m][3];
+
+		for (int i = 0; i < line.length; i++) {
+			for (int j = 0; j < line[i].length; j++) {
+				line[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+
+		init(1, n, 1);
+
+		for (int i = 1; i <= na.length; i++) {
+			insert(1, i, na[i - 1]);
+		}
+
+		for (int i = 0; i < line.length; i++) {
+			switch (line[i][0]) {
+			case 1:
+				insert(1, line[i][1], line[i][2]);
+				break;
+			case 2:
+				System.out.println(find_sum(line[i][1], line[i][2], 1));
+				break;
+			case 3:
+				System.out.println(find_max(line[i][1], line[i][2], 1));
+				break;
+
+			}
+		}
+
+	}
+
+	// 初始化线段树，还没插入值
+	private static void init(int l, int r, int i) {
+		ALGO_8_node[i] = new ALGO_8_Node();
+		ALGO_8_node[i].l = l;
+		ALGO_8_node[i].r = r;
+		ALGO_8_node[i].n = 0;
+		ALGO_8_node[i].sum = 0;
+
+		if (l != r) {
+			int mid = (l + r) / 2;
+			init(l, mid, 2 * i);
+			init(mid + 1, r, 2 * i + 1);
+		}
+	}
+
+	// 线段树插入值
+	private static void insert(int i, int x, int m) {
+		if (x >= ALGO_8_node[i].l && x <= ALGO_8_node[i].r) {
+			ALGO_8_node[i].n = m;
+			ALGO_8_node[i].sum = m;
+		}
+		if (ALGO_8_node[i].l == ALGO_8_node[i].r)
+			return;
+		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
+		if (x > mid)
+			insert(2 * i + 1, x, m);
+		else
+			insert(2 * i, x, m);
+		ALGO_8_node[i].sum = ALGO_8_node[2 * i].sum + ALGO_8_node[2 * i + 1].sum;
+
+		ALGO_8_node[i].n = ALGO_8_node[2 * i].n > ALGO_8_node[2 * i + 1].n ? ALGO_8_node[2 * i].n
+				: ALGO_8_node[2 * i + 1].n;
+
+	}
+
+	private static int find_max(int x, int y, int i) {
+		if (x == ALGO_8_node[i].l && y == ALGO_8_node[i].r)
+			return ALGO_8_node[i].n;
+		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
+		if (x > mid)
+			return find_max(x, y, 2 * i + 1);
+		else if (y <= mid)
+			return find_max(x, y, 2 * i);
+		else
+			return (find_max(x, mid, 2 * i) > find_max(mid + 1, y, 2 * i + 1) ? find_max(x, mid, 2 * i)
+					: find_max(mid + 1, y, 2 * i + 1));
+	}
+
+	private static int find_sum(int x, int y, int i) {
+		if (ALGO_8_node[i].l == x && ALGO_8_node[i].r == y)
+			return ALGO_8_node[i].sum;
+		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
+		if (x > mid)
+			return find_sum(x, y, 2 * i + 1);
+		else if (y <= mid)
+			return find_sum(x, y, 2 * i);
+		else
+			return find_sum(x, mid, 2 * i) + find_sum(mid + 1, y, 2 * i + 1);
 	}
 
 	// /*
