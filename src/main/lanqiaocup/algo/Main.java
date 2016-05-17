@@ -9,6 +9,24 @@ public class Main {
 		// ALGO_139();
 		// ALGO_116();
 		// ALGO_123();
+		// ALGO_100();
+		// ALGO_99();
+		// ALGO_98();
+		// ALGO_97();
+		// ALGO_96();
+		// ALGO_95();
+		// ALGO_94();
+		// ALGO_93();
+		// ALGO_92();
+		// ALGO_91();
+		// ALGO_90();
+		// ALGO_89();
+		// ALGO_88();
+		// ALGO_87();
+		// ALGO_86();
+		// ALGO_85();
+		// ALGO_84();
+		// ALGO_83();
 		// ALGO_72();
 		// ALGO_71();
 		// ALGO_70();
@@ -167,6 +185,927 @@ public class Main {
 		int b = sc.nextInt();
 		sc.close();
 		System.out.println(a + b);
+	}
+
+	/// *
+	// * 算法训练 整除问题
+	// *
+	// * 问题描述
+	// * 编写一个程序，输入三个正整数min、max和factor，然后对于min到max之间的每一个整数（包括min和max），
+	// * 如果它能被factor整除，就把它打印出来。
+	// * 输入格式：
+	// * 输入只有一行，包括三个整数min、max和factor。
+	// * 输出格式：
+	// * 输出只有一行，包括若干个整数。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 1 10 3
+	// * 样例输出
+	// * 3 6 9
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_100() {
+		Scanner sc = new Scanner(System.in);
+		int min = sc.nextInt();
+		int max = sc.nextInt();
+		int factor = sc.nextInt();
+		sc.close();
+
+		while (!(min % factor == 0)) {
+			min++;
+		}
+
+		for (int i = min; i <= max; i += factor) {
+			System.out.print(i + " ");
+		}
+	}
+
+	// /*
+	// * 算法训练 薪水计算
+	// *
+	// * 问题描述
+	// * 编写一个程序，计算员工的周薪。薪水的计算是以小时为单位，如果在一周的时间内，
+	// * 员工工作的时间不超过40 个小时，那么他/她的总收入等于工作时间乘以每小时的薪
+	// * 水。如果员工工作的时间在40 到50 个小时之间，那么对于前40 个小时，仍按常规
+	// * 方法计算；而对于剩余的超额部分，每小时的薪水按1.5 倍计算。如果员工工作的时
+	// * 间超过了50 个小时，那么对于前40 个小时，仍按常规方法计算；对于40～50 个小
+	// * 时之间的部分，每小时的薪水按1.5 倍计算；而对于超出50 个小时的部分，每小时的
+	// * 薪水按2 倍计算。请编写一个程序，输入员工的工作时间和每小时的薪水，然后计算并显
+	// * 示他/她应该得到的周薪。
+	// * 输入格式：
+	// * 输入只有一行，包括一个整数和一个实数，分别表示工作时间和每小时薪水。
+	// * 输出格式：
+	// * 输出只有一个实数，表示周薪，保留小数点后2位。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 40 50
+	// * 样例输出
+	// * 2000.00
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_99() {
+		Scanner sc = new Scanner(System.in);
+		float workTime = sc.nextFloat();
+		float money = sc.nextFloat();
+		sc.close();
+
+		if (workTime <= 40) {
+			System.out.printf("%.2f", (double) (workTime * money));
+			return;
+		} else if (workTime <= 50) {
+			System.out.printf("%.2f", (double) (40 * money + (workTime - 40) * 1.5 * money));
+			return;
+		} else {
+			System.out.printf("%.2f", (double) (40 * money + 10 * 1.5 * money + (workTime - 50) * 2 * money));
+		}
+	}
+
+	// /*
+	// * 算法训练 数位分离
+	// *
+	// * 问题描述
+	// * 编写一个程序，输入一个1000 以内的正整数，然后把这个整数的每一位数字都分离出来，并逐一地显示。
+	// * 输入格式：输入只有一行，即一个1000以内的正整数。
+	// * 输出格式：输出只有一行，即该整数的每一位数字，之间用空格隔开。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 769
+	// * 样例输出
+	// * 7 6 9
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_98() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		sc.close();
+
+		for (int i = 0; i < str.length(); i++) {
+			System.out.print(str.charAt(i) + " ");
+		}
+	}
+
+	// /*
+	// * 算法训练 排序
+	// *
+	// * 问题描述
+	// * 编写一个程序，输入3个整数，然后程序将对这三个整数按照从大到小进行排列。
+	// * 输入格式：输入只有一行，即三个整数，中间用空格隔开。
+	// * 输出格式：输出只有一行，即排序后的结果。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 9 2 30
+	// * 样例输出
+	// * 30 9 2
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_97() {
+		int a[] = new int[3];
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+		}
+		sc.close();
+		java.util.Arrays.sort(a);
+		for (int i = a.length - 1; i >= 0; i--) {
+			System.out.print(a[i] + " ");
+		}
+	}
+
+	/// *
+	// * 算法训练 Hello World!
+	// *
+	// * 描述
+	// * 本题定义本学期作业题的输出格式，请认真阅读。
+	// * 如无特殊说明，开头无空格，间隔符为1个空格，答案最后必须输出换行符("\n")。
+	// * 输入格式
+	// * 无
+	// * 输出格式
+	// * Hello World!
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_96() {
+		System.out.println("Hello World!");
+	}
+
+	// /*
+	// * 算法训练 2的次幂表示
+	// *
+	// * 问题描述
+	// * 任何一个正整数都可以用2进制表示，例如：137的2进制表示为10001001。
+	// * 将这种2进制表示写成2的次幂的和的形式，令次幂高的排在前面，可得到如下表达式：137=2^7+2^3+2^0
+	// * 现在约定幂次用括号来表示，即a^b表示为a（b）
+	// * 此时，137可表示为：2（7）+2（3）+2（0）
+	// * 进一步：7=2^2+2+2^0 （2^1用2表示）
+	// * 3=2+2^0
+	// * 所以最后137可表示为：2（2（2）+2+2（0））+2（2+2（0））+2（0）
+	// * 又如：1315=2^10+2^8+2^5+2+1
+	// * 所以1315最后可表示为：
+	// * 2（2（2+2（0））+2）+2（2（2+2（0）））+2（2（2）+2（0））+2+2（0）
+	// * 输入格式
+	// * 正整数（1<=n<=20000）
+	// * 输出格式
+	// * 符合约定的n的0，2表示（在表示中不能有空格)
+	// *
+	// * 样例输入
+	// * 137
+	// * 样例输入
+	// * 2(2(2)+2+2(0))+2(2+2(0))+2(0)
+	// * 样例输出
+	// * 1315
+	// * 样例输出
+	// * 2(2(2+2(0))+2)+2(2(2+2(0)))+2(2(2)+2(0))+2+2(0)
+	// *
+	// * 提示
+	// * 用递归实现会比较简单，可以一边递归一边输出
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_95() {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		sc.close();
+
+		System.out.println(ALGO_95_DO(num));
+
+	}
+
+	private static String ALGO_95_DO(int num) {
+
+		Boolean[] _boolean = new Boolean[16];
+		for (int i = 0; i < _boolean.length; i++) {
+			_boolean[i] = false;
+		}
+
+		String ALGO_95_str = "";
+
+		ALGO_95_DFS(0, num, -1, _boolean);
+
+		boolean flag = true;
+		for (int i = 0; i < _boolean.length; i++) {
+
+			if (_boolean[i]) {
+				if (i == 1) {
+					if (flag) {
+						ALGO_95_str = "2" + ALGO_95_str;
+						flag = false;
+					} else {
+						ALGO_95_str = "2+" + ALGO_95_str;
+					}
+
+				} else if (i == 0) {
+					if (flag) {
+						ALGO_95_str = "2(0)" + ALGO_95_str;
+						flag = false;
+					} else {
+						ALGO_95_str = "2(0)+" + ALGO_95_str;
+					}
+				} else if (i == 2) {
+					if (flag) {
+						ALGO_95_str = "2(2)" + ALGO_95_str;
+						flag = false;
+					} else {
+						ALGO_95_str = "2(2)+" + ALGO_95_str;
+					}
+				} else {
+
+					if (flag) {
+
+						ALGO_95_str = "2(" + ALGO_95_DO(i) + ")" + ALGO_95_str;
+						flag = false;
+					} else {
+						ALGO_95_str = "2(" + ALGO_95_DO(i) + ")+" + ALGO_95_str;
+					}
+
+				}
+
+			}
+
+		}
+		return ALGO_95_str;
+
+	}
+
+	private static boolean ALGO_95_DFS(int sum, int num, int n, Boolean[] _boolean) {
+		if (sum == num) {
+			return true;
+		}
+		if (n == 15) {
+			return sum == num;
+		}
+		_boolean[n + 1] = true;
+		if (ALGO_95_DFS(sum + (int) Math.pow(2, n + 1), num, n + 1, _boolean)) {
+			return true;
+		}
+
+		_boolean[n + 1] = false;
+		if (ALGO_95_DFS(sum, num, n + 1, _boolean)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	// /*
+	// * 算法训练 新生舞会
+	// * 问题描述
+	// * 新生舞会开始了。n名新生每人有三个属性：姓名、学号、性别。其中，姓名用长度不超过20的仅由
+	// * 大小写字母构成的字符串表示，学号用长度不超过10的仅由数字构成的字符串表示，性别用一个大写
+	// * 字符‘F’或‘M’表示。任意两人的姓名、学号均互不相同。换言之，每个人可被其姓名或学号唯一确定。
+	// * 给出m对两人的信息（姓名或学号），判断他们是否能共舞。两人能共舞的充要条件为两人性别相异。
+	// * 输入
+	// * 第一行一个整数n（2<=n<=1000），表示学生人数。接下来的n行每行依次包含一名新生的姓名、学
+	// * 号、性别，分别用一个空格隔开。
+	// * 之后的一行是一个整数m(1<=m<=1000)，表示询问的数目。接着的m行每行包含两个信息（姓名或学
+	// * 号），保证两个信息不属于同一人，中间用一个空格隔开。
+	// * 输出
+	// * 对于每个询问输出一行，如果两人可以共舞，输出一个大写字母‘Y’，否则输出一个大写字母‘N’。
+	// *
+	// * 样例输入
+	// * 4
+	// * John 10 M
+	// * Jack 11 M
+	// * Kate 20 F
+	// * Jim 21 M
+	// * 3
+	// * John 11
+	// * 20 Jack
+	// * Jim Jack
+	// * 样例输出
+	// * N
+	// * Y
+	// * N
+	// */
+	private static ALGO_94_Students ALGO_94_students[] = new ALGO_94_Students[1000];
+	private static int ALGO_94_n;
+
+	private static class ALGO_94_Students {
+		String name;
+		String num;
+		// man is true and woman is false
+		boolean sex;
+
+	}
+
+	@SuppressWarnings("unused")
+	private static void ALGO_94() {
+		Scanner sc = new Scanner(System.in);
+		ALGO_94_n = sc.nextInt();
+		for (int i = 0; i < ALGO_94_n; i++) {
+			ALGO_94_students[i] = new ALGO_94_Students();
+			ALGO_94_students[i].name = sc.next();
+			ALGO_94_students[i].num = sc.next();
+			ALGO_94_students[i].sex = (sc.next()).equals("M") ? true : false;
+		}
+		int m = sc.nextInt();
+		String student1[] = new String[m];
+		String student2[] = new String[m];
+		for (int i = 0; i < m; i++) {
+			student1[i] = sc.next();
+			student2[i] = sc.next();
+		}
+		sc.close();
+
+		for (int j = 0; j < m; j++) {
+			// System.out.println(ALGO_94_FindStudent(student1[j]));
+			// System.out.println(ALGO_94_FindStudent(student2[j]));
+			if (ALGO_94_FindStudent(student2[j]) ^ ALGO_94_FindStudent(student1[j])) {
+				System.out.println("Y");
+			} else {
+				System.out.println("N");
+			}
+		}
+
+	}
+
+	private static boolean ALGO_94_FindStudent(String str) {
+		// System.out.println("FindStudent: " + str );
+		for (int i = 0; i < ALGO_94_n; i++) {
+			if ((ALGO_94_students[i].name).equals(str) || (ALGO_94_students[i]).num.equals(str)) {
+
+				return ALGO_94_students[i].sex;
+			}
+		}
+		return false;
+	}
+
+	// /*
+	// * 算法训练 反置数
+	// *
+	// * 问题描述
+	// * 一个整数的“反置数”指的是把该整数的每一位数字的顺序颠倒过来所得到的另一个整数。
+	// * 如果一个整数的末尾是以0结尾，那么在它的反置数当中，这些0就被省略掉了。比如说，
+	// * 1245的反置数是5421，而1200的反置数是21。请编写一个程序，输入两个整数，然后
+	// * 计算这两个整数的反置数之和sum，然后再把sum的反置数打印出来。要求：由于在本题
+	// * 中需要多次去计算一个整数的反置数，因此必须把这部分代码抽象为一个函数的形式。
+	// * 输入格式：
+	// * 输入只有一行，包括两个整数，中间用空格隔开。
+	// * 输出格式：
+	// * 输出只有一行，即相应的结果。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 435 754
+	// * 样例输出
+	// * 199
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_93() {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		a = ALGO_93_Fan(a);
+		int b = sc.nextInt();
+		b = ALGO_93_Fan(b);
+		sc.close();
+		System.out.println(ALGO_93_Fan(a + b));
+
+	}
+
+	private static int ALGO_93_Fan(int num) {
+		String temp = num + "";
+		String str = "";
+		for (int i = temp.length() - 1; i >= 0; i--) {
+			str = str + temp.charAt(i);
+		}
+		return Integer.parseInt(str);
+	}
+
+	// /*
+	// * 算法训练 前缀表达式
+	// *
+	// * 问题描述
+	// * 编写一个程序，以字符串方式输入一个前缀表达式，然后计算它的值。
+	// * 输入格式为：“运算符 对象1 对象2”，其中，运算符为“+”（加法）、
+	// * “-”（减法）、“*”（乘法）或“/”（除法），运算对象为不超过10的整
+	// * 数，它们之间用一个空格隔开。要求：对于加、减、乘、除这四种运算，
+	// * 分别设计相应的函数来实现。
+	// * 输入格式：
+	// * 输入只有一行，即一个前缀表达式字符串。
+	// * 输出格式：
+	// * 输出相应的计算结果（如果是除法，直接采用c语言的“/”运算符，结果为整数）。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * + 5 2
+	// * 样例输出
+	// * 7
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_92() {
+		Scanner sc = new Scanner(System.in);
+		String cha = sc.next();
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		sc.close();
+
+		if (cha.equals("+")) {
+			System.out.println(m + n);
+		} else if (cha.equals("-")) {
+			System.out.println(n - m);
+		} else if (cha.equals("*")) {
+			System.out.println(m * n);
+		} else if (cha.equals("/")) {
+			System.out.println(n / m);
+		}
+	}
+
+	/// *
+	// * 算法训练 Anagrams问题
+	// *
+	// * 问题描述
+	// * Anagrams指的是具有如下特性的两个单词：在这两个单词当中，每一个英
+	// * 文字母（不区分大小写）所出现的次数都是相同的。例如，“Unclear”和“Nuclear”、
+	// * “Rimon”和“MinOR”都是Anagrams。编写一个程序，输入两个单词，然后判断一下，这
+	// * 两个单词是否是Anagrams。每一个单词的长度不会超过80个字符，而且是大小写无关的。
+	// * 输入格式：
+	// * 输入有两行，分别为两个单词。
+	// * 输出格式：
+	// * 输出只有一个字母Y或N，分别表示Yes和No。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * Unclear
+	// * Nuclear
+	// * 样例输出
+	// * Y
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_91() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		String str2 = sc.next();
+		sc.close();
+		if (ALGO_91_GetASCII(str) == ALGO_91_GetASCII(str2)) {
+			System.out.println("Y");
+		} else {
+			System.out.println("N");
+		}
+	}
+
+	private static int ALGO_91_GetASCII(String str) {
+		int sum = 0;
+		char arrayChar[] = str.toCharArray();
+		for (int i = 0; i < arrayChar.length; i++) {
+			if (arrayChar[i] < 96) {
+				sum += arrayChar[i] + 32;
+			} else {
+				sum += arrayChar[i];
+			}
+		}
+		return sum;
+	}
+
+	// /*
+	// * 算法训练 出现次数最多的整数
+	// * 问题描述
+	// * 编写一个程序，读入一组整数，这组整数是按照从小到大的顺序排列的，它们的个数N也
+	// * 是由用户输入的，最多不会超过20。然后程序将对这个数组进行统计，把出现次数最多
+	// * 的那个数组元素值打印出来。如果有两个元素值出现的次数相同，即并列第一，那么只打
+	// * 印比较小的那个值
+	// * 输入格式：
+	// * 第一行是一个整数N，N £ 20；接下来有N行，每一行表示一个整数，并且按照从小到大的顺序排列。
+	// * 输出格式：
+	// * 输出只有一行，即出现次数最多的那个元素值。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 5
+	// * 100
+	// * 150
+	// * 150
+	// * 200
+	// * 250
+	// * 样例输出
+	// * 150
+	// */
+	@SuppressWarnings({ "resource", "unused" })
+	private static void ALGO_90() {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		if (N < 1) {
+			return;
+		}
+		int a[] = new int[N];
+
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+		}
+		sc.close();
+		int max = 0;
+		int maxTimeNum = 0;
+		int tempmax = 0;
+		int temp = 0;
+
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != temp) {
+				temp = a[i];
+				tempmax = 1;
+			} else {
+				tempmax++;
+			}
+			if (tempmax > max) {
+				max = tempmax;
+				maxTimeNum = a[i];
+			}
+		}
+		System.out.println(maxTimeNum);
+
+	}
+
+	// /*
+	// * 算法训练 字符删除
+	// *
+	// * 问题描述
+	// * 编写一个程序，先输入一个字符串str（长度不超过20），再输入单独的一个字
+	// * 符ch，然后程序会把字符串str当中出现的所有的ch字符都删掉，从而得到一个
+	// * 新的字符串str2，然后把这个字符串打印出来。
+	// * 输入格式：
+	// * 输入有两行，第一行是一个字符串（内部没有空格），第二行是一个字符。
+	// * 输出格式：
+	// * 经过处理以后的字符串。
+	// *
+	// * 样例输入
+	// * 123-45-678
+	// * -
+	// * 样例输出
+	// * 12345678
+	// */
+	@SuppressWarnings({ "resource", "unused" })
+	private static void ALGO_89() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		if (str.equals("")) {
+			return;
+		}
+		String chr = sc.next();
+		sc.close();
+		char charArray[] = str.toCharArray();
+		for (int i = 0; i < charArray.length; i++) {
+			if (chr.charAt(0) == charArray[i]) {
+				continue;
+			} else {
+				System.out.print(charArray[i]);
+			}
+		}
+	}
+
+	// /*
+	// * 算法训练 字串统计
+	// *
+	// * 问题描述
+	// * 给定一个长度为n的字符串S，还有一个数字L，统计长度大于等于L的出现次数最多的子
+	// * 串（不同的出现可以相交），如果有多个，输出最长的，如果仍然有多个，输出第一次出
+	// * 现最早的。
+	// * 输入格式
+	// * 第一行一个数字L。
+	// * 第二行是字符串S。
+	// * L大于0，且不超过S的长度。
+	// * 输出格式
+	// * 一行，题目要求的字符串。
+	// *
+	// * 输入样例1：
+	// * 4
+	// * bbaabbaaaaa
+	// * 输出样例1：
+	// * bbaa
+	// * 输入样例2：
+	// * 2
+	// * bbaabbaaaaa
+	// * 输出样例2：
+	// * aa
+	// *
+	// * 数据规模和约定
+	// * n<=60
+	// * S中所有字符都是小写英文字母。
+	// * 提示
+	// * 枚举所有可能的子串，统计出现次数，找出符合条件的那个
+	// */
+	private static class ALGO_88_str {
+		String str;
+		int num;
+	}
+
+	@SuppressWarnings("unused")
+	private static void ALGO_88() {
+		Scanner sc = new Scanner(System.in);
+		int L = sc.nextInt();
+		String S = sc.next();
+		sc.close();
+
+		int n = S.length() - L;
+		String str[] = new String[n + 1];
+		java.util.List<ALGO_88_str> list = new java.util.ArrayList<ALGO_88_str>();
+		for (int i = 0; i <= n; i++) {
+			boolean flag = false;
+			str[i] = S.substring(i, i + L);
+			for (int j = 0; j < list.size(); j++) {
+				if (list.get(j).str.equals(str[i])) {
+					list.get(j).num++;
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) {
+				ALGO_88_str a88str = new ALGO_88_str();
+				a88str.str = str[i];
+				a88str.num = 1;
+				list.add(a88str);
+			}
+			// System.out.println(str[i]);
+		}
+		int max = 0;
+		String maxStr = "";
+
+		for (int i = 0; i < list.size(); i++) {
+			// System.out.println(list.get(i).num + " " + list.get(i).str);
+			if (list.get(i).num > max) {
+				max = list.get(i).num;
+				maxStr = list.get(i).str;
+			}
+		}
+		System.out.println(maxStr);
+	}
+
+	// /*
+	// * 算法训练 字串统计
+	// *
+	// * 问题描述
+	// * 给定一个长度为n的字符串S，还有一个数字L，统计长度大于等于L的出现次数最多的子
+	// * 串（不同的出现可以相交），如果有多个，输出最长的，如果仍然有多个，输出第一次出
+	// * 现最早的。
+	// * 输入格式
+	// * 第一行一个数字L。
+	// * 第二行是字符串S。
+	// * L大于0，且不超过S的长度。
+	// * 输出格式
+	// * 一行，题目要求的字符串。
+	// *
+	// * 输入样例1：
+	// * 4
+	// * bbaabbaaaaa
+	// * 输出样例1：
+	// * bbaa
+	// * 输入样例2：
+	// * 2
+	// * bbaabbaaaaa
+	// * 输出样例2：
+	// * aa
+	// *
+	// * 数据规模和约定
+	// * n<=60
+	// * S中所有字符都是小写英文字母。
+	// * 提示
+	// * 枚举所有可能的子串，统计出现次数，找出符合条件的那个
+	// */
+	private static class ALGO_87_str {
+		String str;
+		int num;
+	}
+
+	@SuppressWarnings("unused")
+	private static void ALGO_87() {
+		Scanner sc = new Scanner(System.in);
+		int L = sc.nextInt();
+		String S = sc.next();
+		sc.close();
+
+		int n = S.length() - L;
+		String str[] = new String[n + 1];
+		java.util.List<ALGO_87_str> list = new java.util.ArrayList<ALGO_87_str>();
+		for (int i = 0; i <= n; i++) {
+			boolean flag = false;
+			str[i] = S.substring(i, i + L);
+			for (int j = 0; j < list.size(); j++) {
+				if (list.get(j).str.equals(str[i])) {
+					list.get(j).num++;
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) {
+				ALGO_87_str a87str = new ALGO_87_str();
+				a87str.str = str[i];
+				a87str.num = 1;
+				list.add(a87str);
+			}
+			// System.out.println(str[i]);
+		}
+		int max = 0;
+		String maxStr = "";
+
+		for (int i = 0; i < list.size(); i++) {
+			// System.out.println(list.get(i).num + " " + list.get(i).str);
+			if (list.get(i).num > max) {
+				max = list.get(i).num;
+				maxStr = list.get(i).str;
+			}
+		}
+		System.out.println(maxStr);
+	}
+
+	// /*
+	// * 算法训练 矩阵乘法
+	// *
+	// * 问题描述
+	// * 输入两个矩阵，分别是m*s，s*n大小。输出两个矩阵相乘的结果。
+	// * 输入格式
+	// * 第一行，空格隔开的三个正整数m,s,n（均不超过200）。
+	// * 接下来m行，每行s个空格隔开的整数，表示矩阵A（i，j）。
+	// * 接下来s行，每行n个空格隔开的整数，表示矩阵B（i，j）。
+	// * 输出格式
+	// * m行，每行n个空格隔开的整数，输出相乘後的矩阵C（i，j）的值。
+	// *
+	// * 样例输入
+	// * 2 3 2
+	// * 1 0 -1
+	// * 1 1 -3
+	// * 0 3
+	// * 1 2
+	// * 3 1
+	// * 样例输出
+	// * -3 2
+	// * -8 2
+	// *
+	// * 提示
+	// * 矩阵C应该是m行n列，其中C(i,j)等于矩阵A第i行行向量与矩阵B第j列列向量的内积。
+	// * 例如样例中C(1,1)=(1,0,-1)*(0,1,3) = 1 * 0 +0*1+(-1)*3=-3
+	// */
+	// 超时，java太慢
+	@SuppressWarnings("unused")
+	private static void ALGO_86() {
+		Scanner sc = new Scanner(System.in);
+		int m = sc.nextInt();
+		int s = sc.nextInt();
+		int n = sc.nextInt();
+		int A[][] = new int[m][s];
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < A[i].length; j++) {
+				A[i][j] = sc.nextInt();
+			}
+		}
+		int B[][] = new int[s][n];
+		for (int i = 0; i < B.length; i++) {
+			for (int j = 0; j < B[i].length; j++) {
+				B[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+
+		int C[][] = new int[m][n];
+
+		for (int i = 0; i < C.length; i++) {
+			for (int j = 0; j < C[i].length; j++) {
+				C[i][j] = 0;
+				for (int j2 = 0; j2 < s; j2++) {
+					C[i][j] += A[i][j2] * B[j2][j];
+				}
+				System.out.print(C[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+	}
+
+	// /*
+	// * 算法训练 进制转换
+	// *
+	// * 问题描述
+	// * 编写一个程序，输入一个二进制的字符串（长度不超过32），然后计算出相应的十进制整数，并把它打印出来。
+	// * 输入格式：
+	// * 输入为一个字符串，每个字符都是’0’或’1’，字符串的长度不超过32。
+	// * 输出格式：
+	// * 输出一个整数。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 1101
+	// * 样例输出
+	// * 13
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_85() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		sc.close();
+		int sum = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(str.length() - i - 1) == '1') {
+				sum = (int) (sum + Math.pow(2, i));
+			}
+		}
+		System.out.println(sum);
+	}
+
+	// /*
+	// * 算法训练 大小写转换
+	// *
+	// * 问题描述
+	// * 编写一个程序，输入一个字符串（长度不超过20），然后把这个字符串内的每一个字符进行大小写变换，即将大写字母变
+	// * 成小写，小写字母变成大写，然后把这个新的字符串输出。
+	// * 输入格式：
+	// * 输入一个字符串，而且这个字符串当中只包含英文字母，不包含其他类型的字符，也没有空格。
+	// * 输出格式：
+	// * 输出经过转换后的字符串。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * AeDb
+	// * 样例输出
+	// * aEdB
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_84() {
+		Scanner sc = new Scanner(System.in);
+		String string = sc.next();
+		sc.close();
+		char arrayChar[] = string.toCharArray();
+
+		for (int i = 0; i < arrayChar.length; i++) {
+			if (arrayChar[i] > 96) {
+				System.out.print((char) (arrayChar[i] - 32));
+			} else {
+				System.out.print((char) (arrayChar[i] + 32));
+			}
+		}
+		System.out.println();
+	}
+
+	// /*
+	// * 算法训练 阶乘
+	// *
+	// * 问题描述
+	// * 一个整数n的阶乘可以写成n!，它表示从1到n这n个整数的乘积。阶乘的增长速度非常快，
+	// * 例如，13!就已经比较大了，已经无法存放在一个整型变量中；而35!就更大了，它已经无
+	// * 法存放在一个浮点型变量中。因此，当n比较大时，去计算n!是非常困难的。幸运的是，在
+	// * 本题中，我们的任务不是去计算n!，而是去计算n!最右边的那个非0的数字是多少。例如，
+	// * 5! = 1*2*3*4*5 = 120，因此5!最右边的那个非0的数字是2。再如：7! = 5040，因
+	// * 此7!最右边的那个非0的数字是4。请编写一个程序，输入一个整数n(n<=100)，然后输出n!
+	// * 最右边的那个非0的数字是多少。
+	// * 输入格式：
+	// * 输入只有一个整数n。
+	// * 输出格式：
+	// * 输出只有一个整数，即n! 最右边的那个非0的数字。
+	// *
+	// * 输入输出样例
+	// * 样例输入
+	// * 6
+	// * 样例输出
+	// * 2
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_83() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		int lastNum = 1;
+
+		for (int i = 1; i <= n; i++) {
+			String str = String.valueOf(lastNum * i);
+
+			for (int j = str.length() - 1; j >= 0; j--) {
+				if (str.charAt(j) == '0') {
+					continue;
+				} else {
+					// System.out.println("j: " + j);
+					if (j == 0) {
+						// 保留1位
+						lastNum = Integer.parseInt(String.valueOf(str.charAt(j)));
+					} else if (j == 1) {
+						// System.out.println("str: " + str.substring(j - 1, j +
+						// 1));
+						// 保留2位
+						lastNum = Integer.parseInt(str.substring(j - 1, j + 1));
+					} else {
+						// System.out.println("str: " + str.substring(j - 2, j +
+						// 1));
+						// 保留3位
+						lastNum = Integer.parseInt(str.substring(j - 2, j + 1));
+					}
+					break;
+				}
+			}
+
+		}
+
+		System.out.println(String.valueOf(lastNum).charAt(String.valueOf(lastNum).length() - 1));
+
+		// 方法二
+		// java.math.BigInteger bigInt = java.math.BigInteger.valueOf(1);
+		// for (int i = 1; i <= n; i++) {
+		// bigInt = bigInt.multiply(BigInteger.valueOf(i));
+		// }
+		// System.out.println(bigInt);
+		// String str = bigInt.toString();
+		// for (int i = str.length() - 1; i >= 0; i--) {
+		// if (str.charAt(i) != '0') {
+		// System.out.println(str.charAt(i));
+		// break;
+		// }
+		// }
+
 	}
 
 	// /*
@@ -1074,22 +2013,22 @@ public class Main {
 		}
 		sc.close();
 
-		init(1, n, 1);
+		ALGO_8_Init(1, n, 1);
 
 		for (int i = 1; i <= na.length; i++) {
-			insert(1, i, na[i - 1]);
+			ALGO_8_Insert(1, i, na[i - 1]);
 		}
 
 		for (int i = 0; i < line.length; i++) {
 			switch (line[i][0]) {
 			case 1:
-				insert(1, line[i][1], line[i][2]);
+				ALGO_8_Insert(1, line[i][1], line[i][2]);
 				break;
 			case 2:
-				System.out.println(find_sum(line[i][1], line[i][2], 1));
+				System.out.println(ALGO_8_FindSum(line[i][1], line[i][2], 1));
 				break;
 			case 3:
-				System.out.println(find_max(line[i][1], line[i][2], 1));
+				System.out.println(ALGO_8_FindMax(line[i][1], line[i][2], 1));
 				break;
 
 			}
@@ -1098,7 +2037,7 @@ public class Main {
 	}
 
 	// 初始化线段树，还没插入值
-	private static void init(int l, int r, int i) {
+	private static void ALGO_8_Init(int l, int r, int i) {
 		ALGO_8_node[i] = new ALGO_8_Node();
 		ALGO_8_node[i].l = l;
 		ALGO_8_node[i].r = r;
@@ -1107,13 +2046,13 @@ public class Main {
 
 		if (l != r) {
 			int mid = (l + r) / 2;
-			init(l, mid, 2 * i);
-			init(mid + 1, r, 2 * i + 1);
+			ALGO_8_Init(l, mid, 2 * i);
+			ALGO_8_Init(mid + 1, r, 2 * i + 1);
 		}
 	}
 
 	// 线段树插入值
-	private static void insert(int i, int x, int m) {
+	private static void ALGO_8_Insert(int i, int x, int m) {
 		if (x >= ALGO_8_node[i].l && x <= ALGO_8_node[i].r) {
 			ALGO_8_node[i].n = m;
 			ALGO_8_node[i].sum = m;
@@ -1122,9 +2061,9 @@ public class Main {
 			return;
 		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
 		if (x > mid)
-			insert(2 * i + 1, x, m);
+			ALGO_8_Insert(2 * i + 1, x, m);
 		else
-			insert(2 * i, x, m);
+			ALGO_8_Insert(2 * i, x, m);
 		ALGO_8_node[i].sum = ALGO_8_node[2 * i].sum + ALGO_8_node[2 * i + 1].sum;
 
 		ALGO_8_node[i].n = ALGO_8_node[2 * i].n > ALGO_8_node[2 * i + 1].n ? ALGO_8_node[2 * i].n
@@ -1132,29 +2071,29 @@ public class Main {
 
 	}
 
-	private static int find_max(int x, int y, int i) {
+	private static int ALGO_8_FindMax(int x, int y, int i) {
 		if (x == ALGO_8_node[i].l && y == ALGO_8_node[i].r)
 			return ALGO_8_node[i].n;
 		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
 		if (x > mid)
-			return find_max(x, y, 2 * i + 1);
+			return ALGO_8_FindMax(x, y, 2 * i + 1);
 		else if (y <= mid)
-			return find_max(x, y, 2 * i);
+			return ALGO_8_FindMax(x, y, 2 * i);
 		else
-			return (find_max(x, mid, 2 * i) > find_max(mid + 1, y, 2 * i + 1) ? find_max(x, mid, 2 * i)
-					: find_max(mid + 1, y, 2 * i + 1));
+			return (ALGO_8_FindMax(x, mid, 2 * i) > ALGO_8_FindMax(mid + 1, y, 2 * i + 1)
+					? ALGO_8_FindMax(x, mid, 2 * i) : ALGO_8_FindMax(mid + 1, y, 2 * i + 1));
 	}
 
-	private static int find_sum(int x, int y, int i) {
+	private static int ALGO_8_FindSum(int x, int y, int i) {
 		if (ALGO_8_node[i].l == x && ALGO_8_node[i].r == y)
 			return ALGO_8_node[i].sum;
 		int mid = (ALGO_8_node[i].l + ALGO_8_node[i].r) / 2;
 		if (x > mid)
-			return find_sum(x, y, 2 * i + 1);
+			return ALGO_8_FindSum(x, y, 2 * i + 1);
 		else if (y <= mid)
-			return find_sum(x, y, 2 * i);
+			return ALGO_8_FindSum(x, y, 2 * i);
 		else
-			return find_sum(x, mid, 2 * i) + find_sum(mid + 1, y, 2 * i + 1);
+			return ALGO_8_FindSum(x, mid, 2 * i) + ALGO_8_FindSum(mid + 1, y, 2 * i + 1);
 	}
 
 	// /*
