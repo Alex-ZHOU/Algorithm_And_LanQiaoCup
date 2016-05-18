@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("sjhdak");
+		System.out.println("蓝桥杯 基础练习");
 		// BASIC_30();
 		// BASIC_29();
 		// BASIC_28();
@@ -58,6 +58,7 @@ public class Main {
 	// * 样例输出
 	// * 3628800
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_30() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -101,6 +102,7 @@ public class Main {
 		return result;
 	}
 
+	@SuppressWarnings("unused")
 	private static int BASIC_30_mi(int num, int n) {
 		int sum = 1;
 		for (int i = 0; i < n; i++) {
@@ -174,6 +176,7 @@ public class Main {
 	// * 样例输出
 	// * 20100122203011233454668012
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_29() {
 		Scanner sc = new Scanner(System.in);
 		String aString = sc.next();
@@ -249,6 +252,7 @@ public class Main {
 	// * 样例输出
 	// * 59
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_28() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -335,6 +339,7 @@ public class Main {
 	// * 样例输出
 	// * 0
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_27() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -416,6 +421,35 @@ public class Main {
 		return true;
 	}
 
+	// /*
+	// * 基础练习 报时助手
+	// *
+	// * 问题描述
+	// * 给定当前的时间，请用英文的读法将它读出来。
+	// * 时间用时h和分m表示，在英文的读法中，读一个时间的方法是：
+	// * 如果m为0，则将时读出来，然后加上“o'clock”，如3:00读作“three o'clock”。
+	// * 如果m不为0，则将时读出来，然后将分读出来，如5:30读作“five thirty”。
+	// * 时和分的读法使用的是英文数字的读法，其中0~20读作：
+	// * 0:zero, 1: one, 2:two, 3:three, 4:four, 5:five, 6:six, 7:seven,
+	// 8:eight, 9:nine, 10:ten, 11:eleven,
+	// * 12:twelve, 13:thirteen, 14:fourteen, 15:fifteen, 16:sixteen,
+	// 17:seventeen, 18:eighteen, 19:nineteen,
+	// * 20:twenty。
+	// * 30读作thirty，40读作forty，50读作fifty。
+	// * 对于大于20小于60的数字，首先读整十的数，然后再加上个位数。如31首先读30再加1的读法，读作“thirty one”。
+	// * 按上面的规则21:54读作“twenty one fifty four”，9:07读作“nine seven”，0:15读作“zero
+	// fifteen”。
+	// * 输入格式
+	// * 输入包含两个非负整数h和m，表示时间的时和分。非零的数字前没有前导0。h小于24，m小于60。
+	// * 输出格式
+	// * 输出时间时刻的英文。
+	// *
+	// * 样例输入
+	// * 0 15
+	// * 样例输出
+	// * zero fifteen
+	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_26() {
 		Scanner sc = new Scanner(System.in);
 		int h = sc.nextInt();
@@ -513,34 +547,6 @@ public class Main {
 		System.out.println(string[0] + " " + string[1]);
 	}
 
-	// /*
-	// * 基础练习 报时助手
-	// *
-	// * 问题描述
-	// * 给定当前的时间，请用英文的读法将它读出来。
-	// * 时间用时h和分m表示，在英文的读法中，读一个时间的方法是：
-	// * 如果m为0，则将时读出来，然后加上“o'clock”，如3:00读作“three o'clock”。
-	// * 如果m不为0，则将时读出来，然后将分读出来，如5:30读作“five thirty”。
-	// * 时和分的读法使用的是英文数字的读法，其中0~20读作：
-	// * 0:zero, 1: one, 2:two, 3:three, 4:four, 5:five, 6:six, 7:seven,
-	// 8:eight, 9:nine, 10:ten, 11:eleven,
-	// * 12:twelve, 13:thirteen, 14:fourteen, 15:fifteen, 16:sixteen,
-	// 17:seventeen, 18:eighteen, 19:nineteen,
-	// * 20:twenty。
-	// * 30读作thirty，40读作forty，50读作fifty。
-	// * 对于大于20小于60的数字，首先读整十的数，然后再加上个位数。如31首先读30再加1的读法，读作“thirty one”。
-	// * 按上面的规则21:54读作“twenty one fifty four”，9:07读作“nine seven”，0:15读作“zero
-	// fifteen”。
-	// * 输入格式
-	// * 输入包含两个非负整数h和m，表示时间的时和分。非零的数字前没有前导0。h小于24，m小于60。
-	// * 输出格式
-	// * 输出时间时刻的英文。
-	// *
-	// * 样例输入
-	// * 0 15
-	// * 样例输出
-	// * zero fifteen
-	// * */
 	private static String BASIC_26_biggerThenTwenty(int temp) {
 		String string = "";
 
@@ -628,6 +634,7 @@ public class Main {
 	// * 样例输出
 	// * 1 3 5 6 4 2
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_25() {
 		// java代码运行超时
 		Scanner sc = new Scanner(System.in);
@@ -827,6 +834,7 @@ public class Main {
 	// * T
 	// * 4
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_24() {
 		Scanner sc = new Scanner(System.in);
 		int v1 = sc.nextInt();
@@ -900,6 +908,7 @@ public class Main {
 	// * 样例输出
 	// * 1 3
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_23() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -955,6 +964,7 @@ public class Main {
 	// * 样例输出
 	// * ABACABA
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_22() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -989,6 +999,7 @@ public class Main {
 	// * 样例输出
 	// * ((sin(1)+3)sin(1–sin(2))+2)sin(1–sin(2+sin(3)))+1
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_21() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1055,6 +1066,7 @@ public class Main {
 	// * 样例输出
 	// * shi er yi san qian si bai wu shi liu wan qi qian ling jiu
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_20() {
 		Scanner sc = new Scanner(System.in);
 		String string = sc.next();
@@ -1168,6 +1180,7 @@ public class Main {
 	// * 样例输出
 	// * 3
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_19() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1294,6 +1307,7 @@ public class Main {
 	// * 样例输出
 	// * 1.00
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_18() {
 		Scanner sc = new Scanner(System.in);
 		double a[] = new double[4];
@@ -1354,6 +1368,7 @@ public class Main {
 	// * 7 10
 	// * 15 22
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_17() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1453,6 +1468,7 @@ public class Main {
 	// * 数据规模和约定
 	// * 2<=a<=b<=10000
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_16() {
 
 		Scanner sc = new Scanner(System.in);
@@ -1508,6 +1524,7 @@ public class Main {
 	// * 样例输出
 	// * 3
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_15() {
 		Scanner sc = new Scanner(System.in);
 		String string = sc.next();
@@ -1549,6 +1566,7 @@ public class Main {
 	// * 样例输出
 	// * 1:30:36
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_14() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1580,6 +1598,7 @@ public class Main {
 	// * 样例输出
 	// * 3 4 6 8 9
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_13() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1623,7 +1642,8 @@ public class Main {
 	// * 【提示】
 	// * 先将十六进制数转换成某进制数，再由某进制数转换成八进制。
 	// * */
-	// TODO 运行超时
+	// TODO java运行超时,c++的代码可以通过
+	@SuppressWarnings("unused")
 	private static void BASIC_12() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1729,8 +1749,83 @@ public class Main {
 				value = value + num;
 
 			}
+
+			while (value.charAt(0) == '0') {
+				value = value.replaceFirst("0", "");
+			}
+
 			System.out.println(value);
 		}
+		
+		//C++
+		// // 十六进制转换8进制 AC
+		//
+		// #include <iostream>
+		// #include <string>
+		// using namespace std;
+		// int arr[10000001];
+		//
+		// int main()
+		// {
+		// int n,len_str,i,j;
+		// string str,str2;
+		// cin>>n;
+		// while(n--)
+		// {
+		// cin>>str;
+		// len_str=str.length();
+		// str2="";
+		//
+		// // 十六进制转换为二进制
+		// for(i=0;i<len_str;++i)
+		// {
+		// switch(str[i])
+		// {
+		// case '0':str2+="0000";break;
+		// case '1':str2+="0001";break;
+		// case '2':str2+="0010";break;
+		// case '3':str2+="0011";break;
+		// case '4':str2+="0100";break;
+		// case '5':str2+="0101";break;
+		// case '6':str2+="0110";break;
+		// case '7':str2+="0111";break;
+		// case '8':str2+="1000";break;
+		// case '9':str2+="1001";break;
+		// case 'A':str2+="1010";break;
+		// case 'B':str2+="1011";break;
+		// case 'C':str2+="1100";break;
+		// case 'D':str2+="1101";break;
+		// case 'E':str2+="1110";break;
+		// case 'F':str2+="1111";break;
+		// default:break;
+		// }
+		// }
+		//
+		// // 修正位数
+		// if(len_str%3==1) str2="00"+str2;
+		//
+		// else if(len_str%3==2) str2="0"+str2;
+		//
+		//
+		// len_str=str2.length();
+		// // 二进制转换八进制
+		// j=0;
+		// for(i=0;i<=len_str-2;i+=3)
+		// {
+		// arr[j]=(str2[i]-'0')*4+(str2[i+1]-'0')*2+(str2[i+2]-'0');
+		// ++j;
+		// }
+		//
+		// for(i=0;i<j;++i)
+		// {
+		// if(i==0 && arr[i]==0) continue;
+		// cout<<arr[i];
+		// }
+		// cout<<endl;
+		//
+		// }
+		// return 0;
+		// }
 
 	}
 
@@ -1746,6 +1841,7 @@ public class Main {
 	// * 样例输出
 	// * 65535
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_11() {
 		Scanner sc = new Scanner(System.in);
 		String n = sc.next();
@@ -1813,6 +1909,7 @@ public class Main {
 	// * 样例输出
 	// * 1E
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_10() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1858,6 +1955,7 @@ public class Main {
 	// * 数据规模和约定
 	// * 1<=n<=54。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_9() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -1986,6 +2084,7 @@ public class Main {
 	 * 基础练习 回文数 问题描述 1221是一个非常特殊的数，它从左边读和从右边读是一样的，编程求所有这样的四位十进制数。 输出格式
 	 * 按从小到大的顺序输出满足条件的四位十进制数。
 	 */
+	@SuppressWarnings("unused")
 	private static void BASIC_8() {
 		int[] a = new int[4];
 		for (int i = 1000; i < 10000; i++) {
@@ -2007,6 +2106,7 @@ public class Main {
 	// * 输出格式
 	// * 按从小到大的顺序输出满足条件的三位十进制数，每个数占一行。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_7() {
 		int g, s, b;
 		for (int i = 100; i < 1000; i++) {
@@ -2032,6 +2132,7 @@ public class Main {
 	 * 
 	 * 数据规模与约定 1 <= n <= 34。
 	 */
+	@SuppressWarnings("unused")
 	private static void BASIC_6() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -2074,6 +2175,7 @@ public class Main {
 	// * 数据规模与约定
 	// * 1 <= n <= 1000。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_5() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -2116,6 +2218,7 @@ public class Main {
 	// * 数据规模与约定
 	// * 1 <= n <= 10000。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_4() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
@@ -2178,6 +2281,7 @@ public class Main {
 	// * 数据规模与约定
 	// * 1 <= n, m <= 26。
 	// * */
+	@SuppressWarnings("unused")
 	private static void BASIC_3() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();

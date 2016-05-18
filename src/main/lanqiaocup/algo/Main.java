@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String args[]) {
+		// System.out.println("蓝桥杯 算法训练");
 		// ALGO_142();
 		// ALGO_139();
 		// ALGO_116();
@@ -27,6 +28,16 @@ public class Main {
 		// ALGO_85();
 		// ALGO_84();
 		// ALGO_83();
+		// ALGO_82();
+		// ALGO_81();
+		// ALGO_80();
+		// ALGO_79();
+		// ALGO_78();
+		// ALGO_77();
+		// ALGO_76();
+		// ALGO_75();
+		// ALGO_74();
+		// ALGO_73();
 		// ALGO_72();
 		// ALGO_71();
 		// ALGO_70();
@@ -34,6 +45,7 @@ public class Main {
 		// ALGO_68();
 		// ALGO_67();
 		// ALGO_66();
+		// ALGO_65();
 		// ALGO_64();
 		// ALGO_63();
 		// ALGO_62();
@@ -1109,6 +1121,395 @@ public class Main {
 	}
 
 	// /*
+	// * 算法训练 输出米字形
+	// *
+	// * 根据输入的正整数n (1 米字形由一个(2n-1)*(2n-1)的矩阵组成，矩阵包含从大写A开始的n个字母
+	// * 例如:n=3时，包含A,B,C；n=4时，包含A,B,C,D。
+	// * 矩阵的正中间为n个字母中字典序最大的那个，从这个字母开始，沿着西北、正北、东北、正西、正东、西南、
+	// * 正南、东南八个方向各有一条由大写字母组成的直线。并且直线上的字母按字典序依次减小，直到大写字母A。
+	// * 矩阵的其它位置用英文句号．填充。
+	// *
+	// * 样例输入一
+	// * 3
+	// * 样例输出一
+	// * Ａ．Ａ．Ａ
+	// * ．ＢＢＢ．
+	// * ＡＢＣＢＡ
+	// * ．ＢＢＢ．
+	// * Ａ．Ａ．Ａ
+	// * 样例输入二
+	// * 4
+	// * 样例输出二
+	// * Ａ．．Ａ．．Ａ
+	// * ．Ｂ．Ｂ．Ｂ．
+	// * ．．ＣＣＣ．．
+	// * ＡＢＣＤＣＢＡ
+	// * ．．ＣＣＣ．．
+	// * ．Ｂ．Ｂ．Ｂ．
+	// * Ａ．．Ａ．．Ａ
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_82() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		char str[] = new char[2 * n - 1];
+		char[][] chr = new char[2 * n - 1][2 * n - 1];
+
+		for (int i = 0; i < str.length; i++) {
+			int temp = Math.abs((n - 1) - i);
+			str[i] = (char) (65 + (n - 1) - temp);
+			// System.out.print(str[i]);
+		}
+
+		for (int i = 0; i < chr.length; i++) {
+			for (int j = 0; j < chr[i].length; j++) {
+				chr[i][j] = '.';
+				if (i == j) {
+					chr[i][j] = str[i];
+				}
+				if (i + j == 2 * n - 2) {
+					chr[i][j] = str[i];
+				}
+				if (j == n - 1) {
+					chr[i][j] = str[i];
+				}
+				if (i == n - 1) {
+					chr[i][j] = str[j];
+				}
+				System.out.print(chr[i][j]);
+			}
+			System.out.println();
+		}
+
+	}
+
+	// /*
+	// * 算法训练 动态数组使用
+	// *
+	// * 从键盘读入n个整数，使用动态数组存储所读入的整数，并计算它们的和与平均值分别输出。
+	// * 要求尽可能使用函数实现程序代码。平均值为小数的只保留其整数部分。
+	// *
+	// * 样例输入:
+	// * 5
+	// * 3 4 0 0 2
+	// * 样例输出:
+	// * 9 1
+	// * 样例输入:
+	// * 7
+	// * 3 2 7 5 2 9 1
+	// * 样例输出:
+	// * 29 4
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_81() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int sum = 0;
+		int a[] = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+			sum += a[i];
+		}
+		sc.close();
+
+		System.out.printf("%.0f %.0f", (float) sum, (float) (sum / n));
+	}
+
+	// /*
+	// * 算法训练 整数平均值
+	// *
+	// * 编写函数，求包含n个元素的整数数组中元素的平均值。要求在函数内部
+	// * 使用指针操纵数组元素，其中n个整数从键盘输入，输出为其平均值。
+	// *
+	// * 样例输入:
+	// * 5
+	// * 3 4 0 0 2
+	// * 样例输出:
+	// * 9 1
+	// * 样例输入:
+	// * 7
+	// * 3 2 7 5 2 9 1
+	// * 样例输出:
+	// * 4
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_80() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int sum = 0;
+		int a[] = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+			sum += a[i];
+		}
+		sc.close();
+
+		System.out.printf("%.0f", (float) (sum / n));
+	}
+
+	// /*
+	// * 算法训练 删除数组零元素
+	// *
+	// * 从键盘读入n个整数放入数组中，编写函数CompactIntegers，删除数组中所有值为0的元素，其后元素向数组首端移动。
+	// * 注意，CompactIntegers函数需要接受数组及其元素个数作为参数，函数返回值应为删除操作执行后数组的新元素个数。
+	// * 输出删除后数组中元素的个数并依次输出数组元素。
+	// *
+	// * 样例输入: （输入格式说明：5为输入数据的个数，3 4 0 0 2 是以空格隔开的5个整数）
+	// * 5
+	// * 3 4 0 0 2
+	// * 样例输出:（输出格式说明：3为非零数据的个数，3 4 2 是以空格隔开的3个非零整数）
+	// * 3
+	// * 3 4 2
+	// * 样例输入:
+	// * 7
+	// * 0 0 7 0 0 9 0
+	// * 样例输出:
+	// * 2
+	// * 7 9
+	// * 样例输入:
+	// * 3
+	// * 0 0 0
+	// * 样例输出:
+	// * 0
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_79() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int a[] = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+		}
+		sc.close();
+
+		java.util.List<Integer> list = ALGO_79_CompactIntegers(a);
+		if (list.size() == 0) {
+			System.out.println(0);
+		} else {
+			System.out.println(list.size());
+			for (int i = 0; i < list.size(); i++) {
+				System.out.print(list.get(i) + " ");
+			}
+		}
+	}
+
+	private static java.util.List<Integer> ALGO_79_CompactIntegers(int a[]) {
+		java.util.List<Integer> list = new java.util.ArrayList<Integer>();
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != 0) {
+				list.add(a[i]);
+			}
+		}
+		return list;
+
+	}
+
+	// /*
+	// * 算法训练 确定元音字母位置
+	// *
+	// * 输入一个字符串，编写程序输出该字符串中元音字母的首次出现位置，如果没有元音字母输出0。
+	// * 英语元音字母只有‘a’、‘e’、‘i’、‘o’、‘u’五个。
+	// *
+	// * 样例输入:
+	// * hello
+	// * 样例输出:
+	// * 2
+	// * 样例输入:
+	// * apple
+	// * 样例输出:
+	// * 1
+	// * 样例输入:
+	// * pmp
+	// * 样例输出:
+	// * 0
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_78() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		sc.close();
+
+		for (int i = 0; i < str.length(); i++) {
+			if (ALGO_78_Check(str.charAt(i))) {
+				System.out.println(i + 1);
+				return;
+			}
+		}
+		System.out.println(0);
+
+	}
+
+	private static boolean ALGO_78_Check(char c) {
+		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+			return true;
+		}
+		return false;
+	}
+
+	// /*
+	// * 算法训练 斜率计算
+	// *
+	// * 输入两个点的坐标，即p1 = (x1, y1)和p2=(x2, y2)，求过这两个点的直线的斜率。
+	// * 如果斜率为无穷大输出“INF”。
+	// *
+	// * 样例输入
+	// * 1 2
+	// * 2 4
+	// * 样例输出
+	// * 2
+	// * 样例输入
+	// * 1 2
+	// * 1 4
+	// * 样例输出
+	// * INF
+	// * 样例输入
+	// * 1 2
+	// * 3 2
+	// * 样例输出
+	// * 0
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_77() {
+		Scanner sc = new Scanner(System.in);
+		int x1 = sc.nextInt();
+		int y1 = sc.nextInt();
+		int x2 = sc.nextInt();
+		int y2 = sc.nextInt();
+		sc.close();
+
+		if (x1 - x2 == 0) {
+			System.out.println("INF");
+		} else {
+			System.out.println((y1 - y2) / (x1 - x2));
+		}
+	}
+
+	// /*
+	// * 算法训练 十进制数转八进制数
+	// *
+	// * 编写函数把一个十进制数输出其对应的八进制数。
+	// *
+	// * 样例输入
+	// * 9274
+	// * 样例输出
+	// * 22072
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_76() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+		System.out.printf("%o", n);
+	}
+
+	// /*
+	// * 算法训练 筛选号码
+	// *
+	// * 有n个人围成一圈，顺序排号（编号为1到n）。从第1个人开始报数(从1到3报数)，
+	// * 凡报到3的人退出圈子。从下一个人开始继续报数，直到剩下最后一个人，游戏结束。
+	// * 问最后留下的是原来第几号的那位。
+	// * 举个例子，8个人围成一圈：
+	// * 1 2 3 4 5 6 7 8
+	// * 第1次报数之后，3退出，剩下：
+	// * 1 2 4 5 6 7 8 （现在从4开始报数）
+	// * 第2次报数之后，6退出，剩下：
+	// * 1 2 4 5 7 8 （现在从7开始报数）
+	// * 第3次报数之后，1退出，剩下：
+	// * 2 4 5 7 8 （现在从2开始报数）
+	// * 第4次报数之后，5退出，剩下：
+	// * 2 4 7 8 （现在从7开始报数）
+	// * 第5次报数之后，2退出，剩下：
+	// * 4 7 8 （现在从4开始报数）
+	// * 第6次报数之后，8退出，剩下：
+	// * 4 7 （现在从4开始报数）
+	// * 最后一次报数之后，4退出，剩下：
+	// * 7.
+	// * 所以，最后留下来的人编号是7。
+	// * 输入格式
+	// * 一个正整数n，(1<n<10000)
+	// * 输出格式
+	// * 一个正整数，最后留下来的那个人的编号。
+	// *
+	// * 样例输入
+	// * 8
+	// * 样例输出
+	// * 7
+	// *
+	// * 数据规模和约定
+	// * 对于100%的数据，1<n<10000。
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_75() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		java.util.Queue<Integer> queue = new java.util.LinkedList<Integer>();
+		for (int i = 1; i < n + 1; i++) {
+			queue.offer(i);
+		}
+
+		while (queue.size() != 1) {
+			queue.offer(queue.poll());
+			queue.offer(queue.poll());
+			queue.poll();
+		}
+
+		System.out.println(queue.poll());
+
+	}
+
+	/// *
+	// * 算法训练 连接字符串
+	// *
+	// * 编程将两个字符串连接起来。例如country与side相连接成为countryside。
+	// *
+	// * 输入两行，每行一个字符串（只包含小写字母，长度不超过100）；输出一行一个字符串。
+	// *
+	// * 样例输入
+	// * country
+	// * side
+	// * 样例输出
+	// * countryside
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_74() {
+		Scanner sc = new Scanner(System.in);
+		String str1 = sc.next();
+		String str2 = sc.next();
+		sc.close();
+		System.out.println(str1 + str2);
+	}
+
+	/// *
+	// * 算法训练 统计字符次数
+	// *
+	// * 输入一个字符串(长度在100以内)，统计其中数字字符出现的次数。
+	// *
+	// * 样例输入
+	// * Ab100cd200
+	// * 样例输出
+	// * 6
+	// */
+	@SuppressWarnings("unused")
+	private static void ALGO_73() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		sc.close();
+
+		int sum = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) >= 48 && str.charAt(i) <= 57) {
+				sum++;
+			}
+		}
+		System.out.println(sum);
+
+	}
+
+	// /*
 	// * 算法训练 成绩的等级输出
 	// *
 	// * 输入一个百分制的成绩t后，按下式输出它的等级。等级为：90~100为A，
@@ -1356,6 +1757,73 @@ public class Main {
 			break;
 		}
 
+	}
+
+	// /*
+	// * 算法训练 比赛安排
+	// *
+	// * 问题描述
+	// * 设有有2^n（n<=6）个球队进行单循环比赛，计划在2^n – 1天内完成，每个队每天进行一场比赛。
+	// * 设计一个比赛的安排，使在2^n – 1天内每个队都与不同的对手比赛。
+	// * 输入格式
+	// * 输入文件matchplan.in共一行，输入n的数值。
+	// * 输出格式
+	// * 输出文件matchplan.out共（2 n – 1）行，第i行输出第i天的比赛安排。
+	// * 格式为：<i> A-B，C-D，……。其中i是天数，A，B分别为比赛双方的编号，每行共2^(n-1)个比赛场次。
+	// *
+	// * 样例输入
+	// * 2
+	// * 样例输出
+	// * <1>1-2,3-4
+	// * <2>1-3,2-4
+	// * <3>1-4,2-3
+	// */
+	private static int ALGO_65_A[][] = new int[64][64];
+
+	@SuppressWarnings("unused")
+	private static void ALGO_65() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+		int size = (int) Math.pow(2, n);
+
+		for (int i = 1; i <= size; i++) {
+			ALGO_65_A[0][i] = i;
+		}
+
+		ALGO_65_Do(size, 1, size);
+
+		for (int i = 1; i < size; i++) {
+			System.out.printf("<%d>", i);
+			for (int j = 1; j <= size; j++) {
+				if (ALGO_65_A[i][j] > j) {
+					System.out.printf("%d-%d ", j, ALGO_65_A[i][j]);
+				}
+			}
+			System.out.println();
+		}
+
+	}
+
+	private static void ALGO_65_Do(int s, int left, int right) {
+		if (s < 2) {
+			return;
+		}
+
+		int mid = (left + right) / 2;
+		s /= 2;
+		ALGO_65_Do(s, left, mid);
+		ALGO_65_Do(s, mid + 1, right);
+
+		for (int i = 0; i <= s; i++) {
+			for (int j = left; j <= mid; j++) {
+				ALGO_65_A[i + s][j + s] = ALGO_65_A[i][j];
+			}
+			for (int j = mid + 1; j <= right; j++) {
+				ALGO_65_A[i + s][j - s] = ALGO_65_A[i][j];
+			}
+		}
 	}
 
 	// /*
