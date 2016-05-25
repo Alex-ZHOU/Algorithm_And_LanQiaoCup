@@ -7,7 +7,9 @@ public class Main {
 
 	public static void main(String args[]) {
 		// System.out.println("蓝桥杯 历届试题");
+		// PREV_31();
 		// PREV_29();
+		PREV_12();
 		// PREV_11();
 		// PREV_10();
 		// PREV_9();
@@ -21,128 +23,11 @@ public class Main {
 		// PREV_1();
 	}
 
-	private static int PREV_9_Load = 0;
-
-	private static void PREV_9() {
+	private static void PREV_12() {
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt() - 1;
-		int a[][] = new int[n][3];
-		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < a[i].length; j++) {
-				a[i][j] = sc.nextInt();
-			}
-		}
+		int n = sc.nextInt();
+		int m = sc.nextInt();
 		sc.close();
-
-		PREV_9_DFS(4, a);
-
-		// for (int i = 0; i < a.length; i++) {
-		// for (int j = 0; j < a[i].length; j++) {
-		// System.out.print(a[i][j]);
-		// }
-		// System.out.println();
-		// }
-
-		// int money = 0;
-		//
-		// for (int i = 1; i <= n; i++) {
-		// money = i + 10 + money;
-		// }
-		// System.out.println(money);
-
-	}
-
-	private static void PREV_9_DFS(int data, int[][] a) {
-
-	}
-
-	private static void PREV_29() {
-		Scanner sc = new Scanner(System.in);
-		long n = sc.nextLong();
-		long m = sc.nextLong();
-		long p = sc.nextLong();
-		sc.close();
-
-		long fm = PREV_29_f((int) m);
-
-		long modm = 0;
-		for (int i = 1; i <= n; i++) {
-			modm = ((modm + PREV_29_f(i) % fm) % fm);
-		}
-
-		System.out.println(modm % p);
-
-	}
-
-	private static long PREV_29_F[] = new long[1000];
-
-	private static long PREV_29_f(int i) {
-
-		if (PREV_29_F[i] > 0) {
-			return PREV_29_F[i];
-		}
-
-		if (i == 1 || i == 2) {
-			PREV_29_F[i] = 1;
-
-		} else {
-			PREV_29_F[i] = PREV_29_f(i - 1) + PREV_29_f(i - 2);
-		}
-		return PREV_29_F[i];
-	}
-
-	private static void PREV_112() {
-		Scanner sc = new Scanner(System.in);
-		String in = sc.nextLine();
-		sc.close();
-
-		String str[] = in.split(" ");
-
-		int a[] = new int[str.length];
-		for (int i = 0; i < a.length; i++) {
-			a[i] = Integer.parseInt(str[i]);
-		}
-
-		PREV_11_Do(a);
-
-	}
-
-	private static void PREV_11_Do(int[] a) {
-
-		if (a.length == 1) {
-			return;
-		}
-
-		int first = a[0];
-		boolean flagUp = false;
-		boolean flagDown = false;
-		int up = 0;
-		int down = 0;
-		int loactUp = 0;
-		int loactDown = 0;
-		for (int i = 0; i < a.length; i++) {
-			if (first < a[i] && !flagUp) {
-				flagUp = true;
-				up = a[i];
-				loactUp = i;
-				continue;
-			}
-			if (first > a[i] && !flagDown) {
-				flagDown = true;
-				down = a[i];
-				loactDown = i;
-				continue;
-			}
-		}
-
-		if (loactUp == 1) {
-			int temp[] = new int[loactDown - loactUp];
-			for (int i = loactUp; i < loactDown; i++) {
-				temp[loactUp - temp.length] = a[i];
-				PREV_11_Do(temp);
-			}
-		}
-
 	}
 
 	// /*
@@ -954,6 +839,175 @@ public class Main {
 			if ((i % a == 0) && (i % b == 0) && (i % c == 0)) {
 				System.out.println(i);
 				break;
+			}
+		}
+
+	}
+
+	// 下面的不管
+	//
+	//
+	// //
+	//
+	//
+	private static void PREV_31() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int a[] = new int[n];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = sc.nextInt();
+		}
+		sc.close();
+
+		int anger[] = new int[n];
+		int time[] = new int[n];
+
+		for (int i = 0; i < anger.length; i++) {
+			for (int j = 0; j < anger.length - 1; j++) {
+				if (a[j] > a[j + 1]) {
+					int temp = a[j + 1];
+					a[j + 1] = a[j];
+					a[j] = temp;
+
+					temp = time[j] + 1;
+					time[j] = time[j + 1] + 1;
+					time[j + 1] = temp;
+
+					temp = anger[j + 1] + time[j];
+					anger[j + 1] = anger[j] + time[j + 1];
+
+					anger[j] = temp;
+
+				}
+			}
+		}
+
+		int sum = 0;
+		for (int i = 0; i < anger.length; i++) {
+			sum += anger[i];
+		}
+		System.out.println(sum);
+	}
+
+	private static int PREV_9_Load = 0;
+
+	private static void PREV_9() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt() - 1;
+		int a[][] = new int[n][3];
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				a[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+
+		PREV_9_DFS(4, a);
+
+		// for (int i = 0; i < a.length; i++) {
+		// for (int j = 0; j < a[i].length; j++) {
+		// System.out.print(a[i][j]);
+		// }
+		// System.out.println();
+		// }
+
+		// int money = 0;
+		//
+		// for (int i = 1; i <= n; i++) {
+		// money = i + 10 + money;
+		// }
+		// System.out.println(money);
+
+	}
+
+	private static void PREV_9_DFS(int data, int[][] a) {
+
+	}
+
+	private static void PREV_29() {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		long m = sc.nextLong();
+		long p = sc.nextLong();
+		sc.close();
+
+		long fm = PREV_29_f((int) m);
+
+		long modm = 0;
+		for (int i = 1; i <= n; i++) {
+			modm = ((modm + PREV_29_f(i) % fm) % fm);
+		}
+
+		System.out.println(modm % p);
+
+	}
+
+	private static long PREV_29_F[] = new long[1000];
+
+	private static long PREV_29_f(int i) {
+
+		if (PREV_29_F[i] > 0) {
+			return PREV_29_F[i];
+		}
+
+		if (i == 1 || i == 2) {
+			PREV_29_F[i] = 1;
+
+		} else {
+			PREV_29_F[i] = PREV_29_f(i - 1) + PREV_29_f(i - 2);
+		}
+		return PREV_29_F[i];
+	}
+
+	private static void PREV_112() {
+		Scanner sc = new Scanner(System.in);
+		String in = sc.nextLine();
+		sc.close();
+
+		String str[] = in.split(" ");
+
+		int a[] = new int[str.length];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = Integer.parseInt(str[i]);
+		}
+
+		PREV_11_Do(a);
+
+	}
+
+	private static void PREV_11_Do(int[] a) {
+
+		if (a.length == 1) {
+			return;
+		}
+
+		int first = a[0];
+		boolean flagUp = false;
+		boolean flagDown = false;
+		int up = 0;
+		int down = 0;
+		int loactUp = 0;
+		int loactDown = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (first < a[i] && !flagUp) {
+				flagUp = true;
+				up = a[i];
+				loactUp = i;
+				continue;
+			}
+			if (first > a[i] && !flagDown) {
+				flagDown = true;
+				down = a[i];
+				loactDown = i;
+				continue;
+			}
+		}
+
+		if (loactUp == 1) {
+			int temp[] = new int[loactDown - loactUp];
+			for (int i = loactUp; i < loactDown; i++) {
+				temp[loactUp - temp.length] = a[i];
+				PREV_11_Do(temp);
 			}
 		}
 
