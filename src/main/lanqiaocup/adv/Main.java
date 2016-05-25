@@ -10,7 +10,9 @@ public class Main {
 		// ADV_178();
 		// ADV_175();
 		// ADV_171();
+		// ADV_158();
 		// ADV_148();
+		// ADV_147();
 		// ADV_144();
 		// ADV_2();
 	}
@@ -185,7 +187,97 @@ public class Main {
 		}
 		str += chr[sum %= 11];
 		System.out.println(str);
+	}
 
+	// /*
+	// * 算法提高 新建Microsoft Word文档
+	// *
+	// * 问题描述
+	// * L正在出题，新建了一个word文档，想不好取什么名字，身旁一人惊问：“你出的题目叫
+	// * 《新建Microsoft Word文档》吗？”，L大喜，一拍桌子，说：“好，就叫这个名字了。”
+	// * 仔细观察，当你新建一个word文档时，会得到一个名为“新建 Microsoft Word 文档.doc”
+	// * 的文件，再新建一个，则名为“新建 Microsoft Word 文档(2).doc”，再新建，便是“新建
+	// * Microsoft Word 文档(3).doc”。不断新建，编号不断递增。倘若你现在新建了三个文档，
+	// * 然后删除了“新建 Microsoft Word 文档(2).doc”，再新建就又会得到一个“新建 Microsoft
+	// * Word 文档(2).doc”。
+	// * 严格说，Windows在每次新建文档时，都会选取一个与已有文件编号不重复的最小正整数作为新
+	// * 文档的编号。
+	// * 请编程模拟以上过程，支持以下两种操作
+	// * New：新建一个word文档，反馈新建的文档的编号
+	// * Delete id：删除一个编号为id的word文档，反馈删除是否成功
+	// * 初始时一个文件都没有，“新建 Microsoft Word 文档.doc”的编号算作1。
+	// * 输入格式
+	// * 第一行一个正整数n表示操作次数，接下来n行，每行表示一个操作。若该行为”New”，则表示新
+	// * 建，为”Delete id”则表示要删除编号为id的文档，其中id为一个正整数。操作按输入顺序依
+	// * 次进行。
+	// * 输出格式
+	// * 对于输入的每一行，输出其反馈结果。对于新建操作，输出新建的文档的编号；对于删除操作，反
+	// * 馈删除是否成功：如果删除的文件存在，则删除成功，输出”Successful”，否则输出”Failed”。
+	// *
+	// * 样例输入
+	// * 12
+	// * New
+	// * New
+	// * New
+	// * Delete 2
+	// * New
+	// * Delete 4
+	// * Delete 3
+	// * Delete 1
+	// * New
+	// * New
+	// * New
+	// * Delete 4
+	// * 样例输出
+	// * 1
+	// * 2
+	// * 3
+	// * Successful
+	// * 2
+	// * Failed
+	// * Successful
+	// * Successful
+	// * 1
+	// * 3
+	// * 4
+	// * Successful
+	// *
+	// * 数据规模和约定
+	// * 操作次数（即输入的行数）不超过1481
+	// * 删除编号的数值不超过2012
+	// */
+	@SuppressWarnings("unused")
+	private static void ADV_158() {
+		int a[] = new int[2013];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = Integer.MAX_VALUE;
+		}
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		String str[] = new String[n];
+		for (int i = 0; i < str.length; i++) {
+			str[i] = sc.next();
+			if (str[i].equals("New")) {
+				for (int j = 1; j < a.length; j++) {
+					if (a[j] == Integer.MAX_VALUE) {
+						a[j] = j;
+						System.out.println(j);
+						break;
+					}
+				}
+			} else {
+				int temp = sc.nextInt();
+				if (a[temp] == temp) {
+					a[temp] = Integer.MAX_VALUE;
+					// System.out.print(temp + " ");
+					System.out.println("Successful");
+
+				} else {
+					System.out.println("Failed");
+				}
+			}
+		}
+		sc.close();
 	}
 
 	// /*
@@ -242,6 +334,137 @@ public class Main {
 			sum += b[i];
 		}
 		System.out.println(sum);
+	}
+
+	// /*
+	// * 算法提高 学霸的迷宫
+	// *
+	// * 问题描述
+	// * 学霸抢走了大家的作业，班长为了帮同学们找回作业，决定去找学霸决斗。但学霸为了不要别人打扰，
+	// * 住在一个城堡里，城堡外面是一个二维的格子迷宫，要进城堡必须得先通过迷宫。因为班长还有妹子要
+	// * 陪，磨刀不误砍柴功，他为了节约时间，从线人那里搞到了迷宫的地图，准备提前计算最短的路线。可
+	// * 是他现在正向妹子解释这件事情，于是就委托你帮他找一条最短的路线。
+	// * 输入格式
+	// * 第一行两个整数n， m，为迷宫的长宽。
+	// * 接下来n行，每行m个数，数之间没有间隔，为0或1中的一个。0表示这个格子可以通过，1表示不可以。
+	// * 假设你现在已经在迷宫坐标(1,1)的地方，即左上角，迷宫的出口在(n,m)。每次移动时只能向上下左
+	// * 右4个方向移动到另外一个可以通过的格子里，每次移动算一步。数据保证(1,1)，(n,m)可以通过。
+	// * 输出格式
+	// * 第一行一个数为需要的最少步数K。
+	// * 第二行K个字符，每个字符∈{U,D,L,R},分别表示上下左右。如果有多条长度相同的最短路径，选择在
+	// * 此表示方法下字典序最小的一个。
+	// *
+	// * 样例输入
+	// * Input Sample 1:
+	// * 3 3
+	// * 001
+	// * 100
+	// * 110
+	// *
+	// * Input Sample 2:
+	// * 3 3
+	// * 000
+	// * 000
+	// * 000
+	// * 样例输出
+	// * Output Sample 1:
+	// * 4
+	// * RDRD
+	// *
+	// * Output Sample 2:
+	// * 4
+	// * DDRR
+	// *
+	// * 数据规模和约定
+	// * 有20%的数据满足：1<=n,m<=10
+	// * 有50%的数据满足：1<=n,m<=50
+	// * 有100%的数据满足：1<=n,m<=500。
+	// */
+	private static class ADV_147_Struct {
+		// 步数
+		int num;
+		// 路径
+		String str;
+		int x;
+		int y;
+	}
+
+	@SuppressWarnings("unused")
+	private static void ADV_147() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		String str[] = new String[n];
+		for (int i = 0; i < str.length; i++) {
+			str[i] = sc.next();
+		}
+		sc.close();
+		int a[][] = new int[n + 1][m + 1];
+		for (int i = 1; i < a.length; i++) {
+			for (int j = 1; j < a[i].length; j++) {
+				a[i][j] = (int) str[i - 1].charAt(j - 1) - 48;
+			}
+		}
+		java.util.Queue<ADV_147_Struct> q = new java.util.LinkedList<ADV_147_Struct>();
+		ADV_147_Struct struct = new ADV_147_Struct();
+		struct.num = 0;
+		struct.str = "";
+		struct.x = 1;
+		struct.y = 1;
+		q.offer(struct);
+		a[1][1] = 1;
+
+		char chr[] = { 'U', 'D', 'L', 'R' };
+
+		while (q.size() > 0) {
+			ADV_147_Struct tempS = q.poll();
+			if (tempS.x == n && tempS.y == m) {
+				System.out.println(tempS.num);
+				System.out.println(tempS.str);
+				break;
+			}
+
+			for (int i = 0; i < 4; i++) {
+				int nx = 0;
+				int ny = 0;
+				switch (chr[i]) {
+				case 'U':
+					nx = tempS.x - 1;
+					ny = tempS.y;
+					break;
+				case 'D':
+					nx = tempS.x + 1;
+					ny = tempS.y;
+					break;
+				case 'L':
+					nx = tempS.x;
+					ny = tempS.y - 1;
+					break;
+				case 'R':
+					nx = tempS.x;
+					ny = tempS.y + 1;
+					break;
+
+				}
+
+				if (1 <= nx && nx <= n && 1 <= ny && ny <= m) {
+					if (a[nx][ny] != 1 && a[nx][ny] == 0) {
+						// System.out.println(a[nx][ny] + " " + nx + " " + ny +
+						// " " + chr[i]);
+						a[nx][ny] = 1;
+						ADV_147_Struct temp2 = new ADV_147_Struct();
+						temp2.num = tempS.num + 1;
+						temp2.x = nx;
+						temp2.y = ny;
+						temp2.str = tempS.str + chr[i];
+						q.offer(temp2);
+					}
+				}
+
+			}
+
+		}
+
 	}
 
 	// /*
